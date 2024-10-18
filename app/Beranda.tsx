@@ -10,7 +10,7 @@ const HomeScreen = () => {
                     <Text style={styles.title}>U-Meet</Text>
                     <Text style={styles.subtitle}>Selamat Datang, OCTA DWIANSYAH</Text>
                     <Text style={styles.description}>
-                        Anda telah mengikuti <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
+                        RIFKO telah mengikuti <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
                     </Text>
                     <View style={styles.statContainer}>
                         <View style={styles.statItem}>
