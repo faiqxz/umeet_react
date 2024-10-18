@@ -86,7 +86,7 @@ const HomeScreen = () => {
                             <View style={styles.recommendationCard}>
                                 <Image source={{ uri: "https://placehold.co/150x100" }} style={styles.recommendationImage} />
                                 <Text style={styles.recommendationTitle}>Open Recruitment Staff</Text>
-                                <Text style={styles.recommendationSubTitle}>Open Recruitment Staff All BEM</Text>
+                                <Text style={styles.recommendationSubTitle}>Open Recruitment Staff BEM</Text>
                             </View>
                         </View>
                     </View>
