@@ -17,7 +17,7 @@ const HomeScreen = () => {
                             <Text style={styles.statText}>15 Mengikuti</Text>
                         </View>
                         <View style={styles.statItem}>
-                            <Text style={styles.statText}>5 Sertifikat</Text>
+                            <Text style={styles.statText}>5 sertif</Text>
                         </View>
                     </View>
                     <View style={styles.upcomingEvents}>
