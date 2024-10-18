@@ -8,7 +8,7 @@ const HomeScreen = () => {
             <View style={styles.card}>
                 <View style={styles.content}>
                     <Text style={styles.title}>U-Meet</Text>
-                    <Text style={styles.subtitle}>Selamat Datang, OCTA DWIANSYAH</Text>
+                    <Text style={styles.subtitle}>Selamat Datang, ALIYA NZ</Text>
                     <Text style={styles.description}>
                         RIFKO telah mengikuti <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
                     </Text>
