@@ -76,7 +76,7 @@ const HomeScreen = () => {
                         </View>
                     </View>
                     <View style={styles.recommendations}>
-                        <Text style={styles.sectionTitle}>Rekomendasi untuk Anda</Text>
+                        <Text style={styles.sectionTitle}>Rekomendasi Event untuk Anda</Text>
                         <View style={styles.recommendationContainer}>
                             <View style={styles.recommendationCard}>
                                 <Image source={{ uri: "https://placehold.co/150x100" }} style={styles.recommendationImage} />
