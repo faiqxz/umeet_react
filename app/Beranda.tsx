@@ -14,10 +14,10 @@ const HomeScreen = () => {
                     </Text>
                     <View style={styles.statContainer}>
                         <View style={styles.statItem}>
-                            <Text style={styles.statText}>10 Mengikuti</Text>
+                            <Text style={styles.statText}>15 Mengikuti</Text>
                         </View>
                         <View style={styles.statItem}>
-                            <Text style={styles.statText}>3 Sertifikat</Text>
+                            <Text style={styles.statText}>5 Sertifikat</Text>
                         </View>
                     </View>
                     <View style={styles.upcomingEvents}>
