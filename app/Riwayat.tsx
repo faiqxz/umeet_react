@@ -4,6 +4,11 @@ import { StyleSheet } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 
+// Importing images
+import sifestImage from '../assets/images/sifest.png';
+import uxResearchImage from '../assets/images/UX.png';  // Example: Replace with correct image
+import pertaminaImage from '../assets/images/pertamina.png';
+
 const HomeScreen = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -34,7 +39,7 @@ const HomeScreen = () => {
                             <Text style={styles.eventTitle}>{event.title}</Text>
                             <Text style={styles.status}>Selesai</Text>
                         </View>
-                        <Image source={{ uri: event.image }} style={styles.eventImage} />
+                        <Image source={event.image} style={styles.eventImage} />
                         <View style={styles.ratingContainer}>
                             <View style={styles.starContainer}>
                                 {[...Array(5)].map((_, starIndex) => (
@@ -56,15 +61,15 @@ const HomeScreen = () => {
 const eventData = [
     {
         title: 'SI FEST 2023',
-        image: 'https://placehold.co/600x300',
+        image: sifestImage,
     },
     {
         title: 'Mastering Your UX Research',
-        image: 'https://placehold.co/600x300',
+        image: uxResearchImage,
     },
     {
         title: 'Pertamina Goes to Campus',
-        image: 'https://placehold.co/600x300',
+        image: pertaminaImage,
     },
 ];
 
