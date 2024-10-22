@@ -9,6 +9,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import { StyleSheet } from "react-native";
+import Calendar from './Kalender';
 
 export default function HomeScreen() {
   return (
@@ -17,9 +18,9 @@ export default function HomeScreen() {
         <View style={styles.card}>
           <View style={styles.content}>
             <Text style={styles.title}>U-Meet</Text>
-            <Text style={styles.subtitle}>Selamat Datang, ALIYA NZ</Text>
+            <Text style={styles.subtitle}>Selamat Datang, MOH RIZKY SINAGA!</Text>
             <Text style={styles.description}>
-              ALIYA telah mengikuti{" "}
+              RIZKY telah mengikuti{" "}
               <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
             </Text>
             <View style={styles.statContainer}>
@@ -44,28 +45,28 @@ export default function HomeScreen() {
                 <Text style={styles.eventOrganizer}>HMIF Fasilkom Unsri</Text>
               </View>
               <View style={styles.followedByContainer}>
-                <Text style={styles.followedByText}>Diikuti oleh</Text>
+                <Text style={styles.followedByText}>Diikuti oleh    </Text>
                 <View style={styles.avatarContainer}>
                   {/* Sample avatars */}
                   <Image
-                    source={{ uri: "https://placehold.co/20x20" }}
-                    style={styles.avatar}
+                  source={require("../assets/images/ava1.jpg")}
+                  style={styles.avatar}
                   />
                   <Image
-                    source={{ uri: "https://placehold.co/20x20" }}
-                    style={styles.avatar}
+                  source={require("../assets/images/ava2.png")}
+                  style={styles.avatar}
                   />
                   <Image
-                    source={{ uri: "https://placehold.co/20x20" }}
-                    style={styles.avatar}
+                  source={require("../assets/images/ava3.png")}
+                  style={styles.avatar}
                   />
                   <Image
-                    source={{ uri: "https://placehold.co/20x20" }}
-                    style={styles.avatar}
+                  source={require("../assets/images/ava1.jpg")}
+                  style={styles.avatar}
                   />
                   <Image
-                    source={{ uri: "https://placehold.co/20x20" }}
-                    style={styles.avatar}
+                  source={require("../assets/images/ava3.png")}
+                  style={styles.avatar}
                   />
                 </View>
               </View>
@@ -75,7 +76,7 @@ export default function HomeScreen() {
               <View style={styles.eventIcons}>
                 <TouchableOpacity
                   onPress={() => {
-                    router.push("/Riwayat");
+                    router.push("/Terdaftar");
                   }}
                 >
                   <View style={styles.iconContainer}>
@@ -87,10 +88,19 @@ export default function HomeScreen() {
                   <Text style={styles.icon}>❤️</Text>
                   <Text style={styles.iconText}>Favorit</Text>
                 </View>
+                
+                <TouchableOpacity
+                  onPress={() => {
+                    router.push("/Riwayat");
+                  }}
+                >
                 <View style={styles.iconContainer}>
                   <Text style={styles.icon}>⏳</Text>
                   <Text style={styles.iconText}>Riwayat</Text>
                 </View>
+                </TouchableOpacity>
+
+
                 <View style={styles.iconContainer}>
                   <Text style={styles.icon}>🎓</Text>
                   <Text style={styles.iconText}>Sertifikat</Text>
@@ -101,19 +111,19 @@ export default function HomeScreen() {
               <Text style={styles.sectionTitle}>Penyelenggara</Text>
               <View style={styles.organizerLogos}>
                 <Image
-                  source={{ uri: "https://placehold.co/50x50" }}
+                  source={require("../assets/images/himsi.png")}
                   style={styles.organizerLogo}
                 />
                 <Image
-                  source={{ uri: "https://placehold.co/50x50" }}
+                  source={require("../assets/images/bem.png")}
                   style={styles.organizerLogo}
                 />
                 <Image
-                  source={{ uri: "https://placehold.co/50x50" }}
+                  source={require("../assets/images/hmif.png")}
                   style={styles.organizerLogo}
                 />
                 <Image
-                  source={{ uri: "https://placehold.co/50x50" }}
+                  source={require("../assets/images/intelll.png")}
                   style={styles.organizerLogo}
                 />
               </View>
@@ -125,8 +135,8 @@ export default function HomeScreen() {
               <View style={styles.recommendationContainer}>
                 <View style={styles.recommendationCard}>
                   <Image
-                    source={{ uri: "https://placehold.co/150x100" }}
-                    style={styles.recommendationImage}
+                  source={require("../assets/images/pertamina.png")}
+                  style={styles.recommendationImage}
                   />
                   <Text style={styles.recommendationTitle}>
                     Pertamina Goes to Campus
@@ -137,8 +147,8 @@ export default function HomeScreen() {
                 </View>
                 <View style={styles.recommendationCard}>
                   <Image
-                    source={{ uri: "https://placehold.co/150x100" }}
-                    style={styles.recommendationImage}
+                  source={require("../assets/images/oprecbem.png")}
+                  style={styles.recommendationImage}
                   />
                   <Text style={styles.recommendationTitle}>
                     Open Recruitment Staff
@@ -151,7 +161,7 @@ export default function HomeScreen() {
             </View>
             <View style={styles.calendar}>
               <Text style={styles.sectionTitle}>Kalender</Text>
-              {/* Calendar structure can be implemented here */}
+              <Calendar />
             </View>
           </View>
         </View>
@@ -165,6 +175,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: "#f9f9f9",
     padding: 10,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   card: {
     backgroundColor: "#fff",
@@ -266,14 +279,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 5,
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
   followedByText: {
-    fontSize: 14,
+    fontSize: 16,
     color: "#6b7280",
   },
   avatarContainer: {
     flexDirection: "row",
     marginLeft: 5,
+    marginTop: 2,
   },
   avatar: {
     width: 20,
