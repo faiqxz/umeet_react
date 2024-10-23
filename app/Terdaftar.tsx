@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome"; // Ensure you install react-native-vector-icons
+import { FaChevronLeft } from "react-icons/fa";
+import Icon from "react-native-vector-icons/FontAwesome"; 
 import iffestImage from "../assets/images/iffest.png";
 import sifestImage from "../assets/images/sifest.png";
 import intelImage from "../assets/images/intel.png";
@@ -9,12 +10,7 @@ import intelImage from "../assets/images/intel.png";
 const HomeScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Icon name="arrow-left" size={24} color="#1E90FF" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Kamu terdaftar disini</Text>
-      </View>
+      
       <View style={styles.eventList}>
         {/* Event 1 */}
         <View style={styles.eventCard}>

@@ -43,7 +43,26 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="Terdaftar" />
+        <Stack.Screen
+          name="Terdaftar"
+          options={{
+            headerStyle: {
+              backgroundColor: "#f9f9f9",
+            },
+            headerShadowVisible: false,
+            headerTintColor: "#3B82F6",
+          }}
+        />
+        <Stack.Screen
+          name="Favorit"
+          options={{
+            headerStyle: {
+              backgroundColor: "#f9f9f9",
+            },
+            headerShadowVisible: false,
+            headerTintColor: "#3B82F6",
+          }}
+        />
         <Stack.Screen
           name="Riwayat"
           options={{
@@ -54,7 +73,15 @@ export default function RootLayout() {
             headerTintColor: "#3B82F6",
           }}
         />
-        <Stack.Screen name="Sertifikat" />
+        <Stack.Screen
+          name="Sertifikat"
+          options={{
+            headerStyle: {
+              backgroundColor: "#f9f9f9",
+            },
+            headerShadowVisible: false,
+            headerTintColor: "#3B82F6",
+          }} />
       </Stack>
     </ThemeProvider>
   );
