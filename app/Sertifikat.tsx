@@ -42,13 +42,7 @@ const events = [
 const HomeScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <FontAwesomeIcon icon={faArrowLeft} size={32} color="#1E90FF" />
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Jangan lewatkan event favoritmu!</Text>
-      </View>
-
+      
       {events.map((event, index) => (
         <View key={index} style={styles.eventCard}>
           {/* Check if the image is a URL or local */}

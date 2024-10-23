@@ -21,7 +21,9 @@ export default function HomeScreen() {
             <Text style={styles.subtitle}>Selamat Datang, MOH RIZKY SINAGA!</Text>
             <Text style={styles.description}>
               RIZKY telah mengikuti{" "}
-              <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
+              <TouchableOpacity style={styles.statText}>
+                <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
+              </TouchableOpacity>
             </Text>
             <View style={styles.statContainer}>
               <View style={styles.statItem}>
@@ -49,24 +51,24 @@ export default function HomeScreen() {
                 <View style={styles.avatarContainer}>
                   {/* Sample avatars */}
                   <Image
-                  source={require("../assets/images/ava1.jpg")}
-                  style={styles.avatar}
+                    source={require("../assets/images/ava1.jpg")}
+                    style={styles.avatar}
                   />
                   <Image
-                  source={require("../assets/images/ava2.png")}
-                  style={styles.avatar}
+                    source={require("../assets/images/ava2.png")}
+                    style={styles.avatar}
                   />
                   <Image
-                  source={require("../assets/images/ava3.png")}
-                  style={styles.avatar}
+                    source={require("../assets/images/ava3.png")}
+                    style={styles.avatar}
                   />
                   <Image
-                  source={require("../assets/images/ava1.jpg")}
-                  style={styles.avatar}
+                    source={require("../assets/images/ava1.jpg")}
+                    style={styles.avatar}
                   />
                   <Image
-                  source={require("../assets/images/ava3.png")}
-                  style={styles.avatar}
+                    source={require("../assets/images/ava3.png")}
+                    style={styles.avatar}
                   />
                 </View>
               </View>
@@ -84,27 +86,41 @@ export default function HomeScreen() {
                     <Text style={styles.iconText}>Terdaftar</Text>
                   </View>
                 </TouchableOpacity>
-                <View style={styles.iconContainer}>
-                  <Text style={styles.icon}>❤️</Text>
-                  <Text style={styles.iconText}>Favorit</Text>
-                </View>
-                
+
+                <TouchableOpacity
+                  onPress={() => {
+                    router.push("/Favorit");
+                  }}
+                >
+                  <View style={styles.iconContainer}>
+                    <Text style={styles.icon}>❤️</Text>
+                    <Text style={styles.iconText}>Favorit</Text>
+                  </View>
+                </TouchableOpacity>
+
+
                 <TouchableOpacity
                   onPress={() => {
                     router.push("/Riwayat");
                   }}
                 >
-                <View style={styles.iconContainer}>
-                  <Text style={styles.icon}>⏳</Text>
-                  <Text style={styles.iconText}>Riwayat</Text>
-                </View>
+                  <View style={styles.iconContainer}>
+                    <Text style={styles.icon}>⏳</Text>
+                    <Text style={styles.iconText}>Riwayat</Text>
+                  </View>
                 </TouchableOpacity>
 
+                <TouchableOpacity
+                  onPress={() => {
+                    router.push("/Sertifikat");
+                  }}
+                >
+                  <View style={styles.iconContainer}>
+                    <Text style={styles.icon}>🎓</Text>
+                    <Text style={styles.iconText}>Sertifikat</Text>
+                  </View>
+                </TouchableOpacity>
 
-                <View style={styles.iconContainer}>
-                  <Text style={styles.icon}>🎓</Text>
-                  <Text style={styles.iconText}>Sertifikat</Text>
-                </View>
               </View>
             </View>
             <View style={styles.organizers}>
@@ -135,8 +151,8 @@ export default function HomeScreen() {
               <View style={styles.recommendationContainer}>
                 <View style={styles.recommendationCard}>
                   <Image
-                  source={require("../assets/images/pertamina.png")}
-                  style={styles.recommendationImage}
+                    source={require("../assets/images/pertamina.png")}
+                    style={styles.recommendationImage}
                   />
                   <Text style={styles.recommendationTitle}>
                     Pertamina Goes to Campus
@@ -147,8 +163,8 @@ export default function HomeScreen() {
                 </View>
                 <View style={styles.recommendationCard}>
                   <Image
-                  source={require("../assets/images/oprecbem.png")}
-                  style={styles.recommendationImage}
+                    source={require("../assets/images/oprecbem.png")}
+                    style={styles.recommendationImage}
                   />
                   <Text style={styles.recommendationTitle}>
                     Open Recruitment Staff
