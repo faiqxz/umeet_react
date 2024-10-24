@@ -82,6 +82,15 @@ export default function RootLayout() {
             headerShadowVisible: false,
             headerTintColor: "#3B82F6",
           }} />
+          <Stack.Screen
+          name="Detail"
+          options={{
+            headerStyle: {
+              backgroundColor: "#f9f9f9",
+            },
+            headerShadowVisible: false,
+            headerTintColor: "#3B82F6",
+          }} />
       </Stack>
     </ThemeProvider>
   );

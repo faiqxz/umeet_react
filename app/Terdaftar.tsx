@@ -1,8 +1,9 @@
+import { router } from "expo-router";
 import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import { FaChevronLeft } from "react-icons/fa";
-import Icon from "react-native-vector-icons/FontAwesome"; 
+import Icon from "react-native-vector-icons/FontAwesome";
 import iffestImage from "../assets/images/iffest.png";
 import sifestImage from "../assets/images/sifest.png";
 import intelImage from "../assets/images/intel.png";
@@ -10,38 +11,44 @@ import intelImage from "../assets/images/intel.png";
 const HomeScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      
-      <View style={styles.eventList}>
-        {/* Event 1 */}
-        <View style={styles.eventCard}>
-          <Image
-            source={require("../assets/images/sifest.png")}
-            style={styles.eventImage}
-          />
 
-          <View style={styles.eventInfo}>
-            <View style={styles.eventHeader}>
-              <Text style={styles.eventDate}>12 November 2023</Text>
-              <View style={styles.avatarContainer}>
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
+      <View style={styles.eventList}>
+
+        <TouchableOpacity
+          onPress={() => {
+            router.push("/Detail");
+          }}
+        >
+          {/* Event 1 */}
+          <View style={styles.eventCard}>
+            <Image
+              source={require("../assets/images/sifest.png")}
+              style={styles.eventImage}
+            />
+            <View style={styles.eventInfo}>
+              <View style={styles.eventHeader}>
+                <Text style={styles.eventDate}>12 November 2023</Text>
+                <View style={styles.avatarContainer}>
+                  <Image
+                    source={{ uri: "https://placehold.co/24x24" }}
+                    style={styles.avatar}
+                  />
+                  <Image
+                    source={{ uri: "https://placehold.co/24x24" }}
+                    style={styles.avatar}
+                  />
+                  <Image
+                    source={{ uri: "https://placehold.co/24x24" }}
+                    style={styles.avatar}
+                  />
+                </View>
               </View>
-            </View>
-            <Text style={styles.eventTitle}>SI Fest 2023</Text>
-            <Text style={styles.eventDescription}>
-              Artificial Intelligence, Is It A Good Thing Or Bad Thing?
-            </Text>
-            <Text style={styles.eventOrganizer}>HIMSI FASILKOM UNSRI</Text>
+              <Text style={styles.eventTitle}>SI Fest 2023</Text>
+              <Text style={styles.eventDescription}>
+                Artificial Intelligence, Is It A Good Thing Or Bad Thing?
+              </Text>
+              <Text style={styles.eventOrganizer}>HIMSI FASILKOM UNSRI</Text>
+
             <View style={styles.eventActions}>
               <TouchableOpacity>
                 <Icon name="comment" size={20} color="#1E90FF" />
@@ -51,93 +58,97 @@ const HomeScreen = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
-        {/* Event 2 */}
-        <View style={styles.eventCard}>
+
+      </View>
+      </TouchableOpacity>
+
+
+      {/* Event 2 */}
+      <View style={styles.eventCard}>
         <Image
-            source={require("../assets/images/iffest.png")}
-            style={styles.eventImage}
-          />
-          <View style={styles.eventInfo}>
-            <View style={styles.eventHeader}>
-              <Text style={styles.eventDate}>15 April 2024</Text>
-              <View style={styles.avatarContainer}>
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-              </View>
-            </View>
-            <Text style={styles.eventTitle}>IFFEST 2024</Text>
-            <Text style={styles.eventDescription}>
-              Ignite The Competition, Sparks Of Informatics
-            </Text>
-            <Text style={styles.eventOrganizer}>HIMIF FASILKOM UNSRI</Text>
-            <View style={styles.eventActions}>
-              <TouchableOpacity>
-                <Icon name="comment" size={20} color="#1E90FF" />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Icon name="share" size={20} color="#1E90FF" />
-              </TouchableOpacity>
+          source={require("../assets/images/iffest.png")}
+          style={styles.eventImage}
+        />
+        <View style={styles.eventInfo}>
+          <View style={styles.eventHeader}>
+            <Text style={styles.eventDate}>15 April 2024</Text>
+            <View style={styles.avatarContainer}>
+              <Image
+                source={{ uri: "https://placehold.co/24x24" }}
+                style={styles.avatar}
+              />
+              <Image
+                source={{ uri: "https://placehold.co/24x24" }}
+                style={styles.avatar}
+              />
+              <Image
+                source={{ uri: "https://placehold.co/24x24" }}
+                style={styles.avatar}
+              />
+              <Image
+                source={{ uri: "https://placehold.co/24x24" }}
+                style={styles.avatar}
+              />
             </View>
           </View>
-        </View>
-        {/* Event 3 */}
-        <View style={styles.eventCard}>
-        <Image
-            source={require("../assets/images/Intel.png")}
-            style={styles.eventImage}
-          />
-          <View style={styles.eventInfo}>
-            <View style={styles.eventHeader}>
-              <Text style={styles.eventDate}>12 November 2023</Text>
-              <View style={styles.avatarContainer}>
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-                <Image
-                  source={{ uri: "https://placehold.co/24x24" }}
-                  style={styles.avatar}
-                />
-              </View>
-            </View>
-            <Text style={styles.eventTitle}>
-              Recruitment for BO INTEL FASILKOM UNSRI 2024
-            </Text>
-            <Text style={styles.eventDescription}>
-              Join us to explore new opportunities!
-            </Text>
-            <Text style={styles.eventOrganizer}>HIMSI FASILKOM UNSRI</Text>
-            <View style={styles.eventActions}>
-              <TouchableOpacity>
-                <Icon name="comment" size={20} color="#1E90FF" />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Icon name="share" size={20} color="#1E90FF" />
-              </TouchableOpacity>
-            </View>
+          <Text style={styles.eventTitle}>IFFEST 2024</Text>
+          <Text style={styles.eventDescription}>
+            Ignite The Competition, Sparks Of Informatics
+          </Text>
+          <Text style={styles.eventOrganizer}>HIMIF FASILKOM UNSRI</Text>
+          <View style={styles.eventActions}>
+            <TouchableOpacity>
+              <Icon name="comment" size={20} color="#1E90FF" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="share" size={20} color="#1E90FF" />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
-    </ScrollView>
+      {/* Event 3 */}
+      <View style={styles.eventCard}>
+        <Image
+          source={require("../assets/images/Intel.png")}
+          style={styles.eventImage}
+        />
+        <View style={styles.eventInfo}>
+          <View style={styles.eventHeader}>
+            <Text style={styles.eventDate}>12 November 2023</Text>
+            <View style={styles.avatarContainer}>
+              <Image
+                source={{ uri: "https://placehold.co/24x24" }}
+                style={styles.avatar}
+              />
+              <Image
+                source={{ uri: "https://placehold.co/24x24" }}
+                style={styles.avatar}
+              />
+              <Image
+                source={{ uri: "https://placehold.co/24x24" }}
+                style={styles.avatar}
+              />
+            </View>
+          </View>
+          <Text style={styles.eventTitle}>
+            Recruitment for BO INTEL FASILKOM UNSRI 2024
+          </Text>
+          <Text style={styles.eventDescription}>
+            Join us to explore new opportunities!
+          </Text>
+          <Text style={styles.eventOrganizer}>HIMSI FASILKOM UNSRI</Text>
+          <View style={styles.eventActions}>
+            <TouchableOpacity>
+              <Icon name="comment" size={20} color="#1E90FF" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="share" size={20} color="#1E90FF" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </View>
+    </ScrollView >
   );
 };
 
