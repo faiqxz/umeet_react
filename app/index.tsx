@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -12,67 +12,92 @@ import { StyleSheet } from "react-native";
 import Calendar from './Kalender';
 
 export default function HomeScreen() {
+  // State untuk mengatur apakah card disimpan ditampilkan
+  const [showSavedCard, setShowSavedCard] = useState<boolean>(false);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView>
-        <View style={styles.card}>
-          <View style={styles.content}>
-            <Text style={styles.title}>U-Meet</Text>
-            <Text style={styles.subtitle}>Selamat Datang, MOH RIZKY SINAGA!</Text>
-            <Text style={styles.description}>
-              RIZKY telah mengikuti{" "}
-              <TouchableOpacity style={styles.statText}>
-                <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
+        <View style={styles.content}>
+          <View style={styles.card}>
+            <View style={styles.content}>
+              <Text style={styles.title}>U-Meet</Text>
+              <Text style={styles.subtitle}>Selamat Datang, MOH RIZKY SINAGA!</Text>
+              <TouchableOpacity onPress={() => {
+                router.push("/Riwayat");
+              }}>
+                <Text style={styles.description}>
+                  RIZKY telah mengikuti{" "}
+                  <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
+                </Text>
               </TouchableOpacity>
-            </Text>
-            <View style={styles.statContainer}>
-              <View style={styles.statItem}>
-                <Text style={styles.statText}>16 Mengikuti</Text>
+
+              <View style={styles.statContainer}>
+                <View style={styles.statItem}>
+                  <Text style={styles.statText}>16 Mengikuti</Text>
+                </View>
+                <View style={styles.statItem}>
+                  <Text style={styles.statText}>5 Sertifikat</Text>
+                </View>
               </View>
-              <View style={styles.statItem}>
-                <Text style={styles.statText}>5 Sertifikat</Text>
-              </View>
-            </View>
-            <View style={styles.upcomingEvents}>
-              <Text style={styles.sectionTitle}>Kegiatan mendatang</Text>
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Sedang diikuti</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonSecondary}>
-                <Text style={styles.buttonTextSecondary}>Disimpan</Text>
-              </TouchableOpacity>
-              <View style={styles.eventCard}>
-                <Text style={styles.eventTime}>Hari ini, 08:00</Text>
-                <Text style={styles.eventTitle}>IF FEST 2024</Text>
-                <Text style={styles.eventOrganizer}>HMIF Fasilkom Unsri</Text>
-              </View>
-              <View style={styles.followedByContainer}>
-                <Text style={styles.followedByText}>Diikuti oleh    </Text>
-                <View style={styles.avatarContainer}>
-                  {/* Sample avatars */}
-                  <Image
-                    source={require("../assets/images/ava1.jpg")}
-                    style={styles.avatar}
-                  />
-                  <Image
-                    source={require("../assets/images/ava2.png")}
-                    style={styles.avatar}
-                  />
-                  <Image
-                    source={require("../assets/images/ava3.png")}
-                    style={styles.avatar}
-                  />
-                  <Image
-                    source={require("../assets/images/ava1.jpg")}
-                    style={styles.avatar}
-                  />
-                  <Image
-                    source={require("../assets/images/ava3.png")}
-                    style={styles.avatar}
-                  />
+
+              <View style={styles.upcomingEvents}>
+                <Text style={styles.sectionTitle}>Kegiatan mendatang</Text>
+                <TouchableOpacity style={[styles.button, showSavedCard ? styles.inactiveButton :styles]} 
+                  onPress={() => setShowSavedCard(false)}>
+                  <Text style={styles.buttonText}>Sedang diikuti</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.buttonSecondary, showSavedCard && styles.activeButton]} 
+                  onPress={() => setShowSavedCard(true)}>
+                  <Text style={styles.buttonTextSecondary}>Disimpan</Text>
+                </TouchableOpacity>
+
+                {/* Tampilkan card berbeda jika showSavedCard true */}
+                {showSavedCard ? (
+                  <View style={styles.eventCard}>
+                    <Text style={styles.eventTime}>Hari ini, 10:00</Text>
+                    <Text style={styles.eventTitle}>Workshop React Native</Text>
+                    <Text style={styles.eventOrganizer}>HIMSI Fasilkom Unsri</Text>
+                  </View>
+                ) : (
+                  <View style={styles.eventCard}>
+                    <Text style={styles.eventTime}>Hari ini, 08:00</Text>
+                    <Text style={styles.eventTitle}>IF FEST 2024</Text>
+                    <Text style={styles.eventOrganizer}>HMIF Fasilkom Unsri</Text>
+                  </View>
+                )}
+                <View style={styles.container}>
+                  <View style={styles.followedByContainer}>
+                    <Text style={styles.followedByText}>Diikuti oleh   </Text>
+                    <View style={styles.avatarContainer}>
+                      {/* Sample avatars */}
+                      <Image
+                        source={require("../assets/images/ava1.jpg")}
+                        style={styles.avatar}
+                      />
+                      <Image
+                        source={require("../assets/images/ava2.png")}
+                        style={styles.avatar}
+                      />
+                      <Image
+                        source={require("../assets/images/ava3.png")}
+                        style={styles.avatar}
+                      />
+                      <Image
+                        source={require("../assets/images/ava1.jpg")}
+                        style={styles.avatar}
+                      />
+                      <Image
+                        source={require("../assets/images/ava3.png")}
+                        style={styles.avatar}
+                      />
+                    </View>
+                  </View>
                 </View>
               </View>
             </View>
+          </View>
+
+          <View style={styles.exploreEvents}>
             <View style={styles.exploreEvents}>
               <View style={styles.othersEvent}>
                 <Text style={styles.sectionTitle}>Jelajahi event</Text>
@@ -134,6 +159,7 @@ export default function HomeScreen() {
 
               </View>
             </View>
+
             <View style={styles.organizers}>
               <Text style={styles.sectionTitle}>Penyelenggara</Text>
               <View style={styles.organizerLogos}>
@@ -192,32 +218,38 @@ export default function HomeScreen() {
             </View>
           </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </ScrollView >
+    </SafeAreaView >
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#f9f9f9",
+    // backgroundColor: "#f9f9f9",
     padding: 10,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  safeArea: {
+    backgroundColor: "#f9f9f9",
+  },
+  aturLah: {
+    padding: 30,
+  },
   card: {
     backgroundColor: "#fff",
     borderRadius: 10,
+    padding: 20,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 4,
-    paddingTop: 40,
   },
   content: {
-    padding: 20,
+    // padding: 10,
   },
   title: {
     fontSize: 24,
@@ -269,6 +301,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   buttonSecondary: {
+    color: "#fff",
     backgroundColor: "#f0f0f0",
     padding: 10,
     borderRadius: 20,
@@ -276,7 +309,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonTextSecondary: {
-    color: "#6b7280",
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  activeButton: {
+    backgroundColor: "#1E90FF",
+  },
+  // Gaya tombol untuk saat tidak aktif
+  inactiveButton: {
+    backgroundColor: "#f0f0f0",
+  },
+  // Gaya teks tombol saat aktif
+  buttonTextActive: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  // Gaya teks tombol saat tidak aktif
+  buttonTextInactive: {
+    color: "#fff",
     fontWeight: "bold",
   },
   eventCard: {
@@ -326,6 +376,7 @@ const styles = StyleSheet.create({
   },
   exploreEvents: {
     marginTop: 20,
+    // padding: 20,
   },
   othersEvent: {
     flexDirection: 'row',
