@@ -95,7 +95,7 @@ const HomeScreen = () => {
           <Text style={styles.eventDescription}>
             Ignite The Competition, Sparks Of Informatics
           </Text>
-          <Text style={styles.eventOrganizer}>HIMIF FASILKOM UNSRI</Text>
+          <Text style={styles.eventOrganizer}>HMIF FASILKOM UNSRI</Text>
           <View style={styles.eventActions}>
             <TouchableOpacity>
               <Icon name="comment" size={20} color="#1E90FF" />
