@@ -8,7 +8,6 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen"; // Only one import for SplashScreen
 import { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Beranda from "./Beranda";
 import Terdaftar from "./Terdaftar";
 import Riwayat from "./Riwayat";
 import Sertifikat from "./Sertifikat";
@@ -82,8 +81,17 @@ export default function RootLayout() {
             headerShadowVisible: false,
             headerTintColor: "#3B82F6",
           }} />
-          <Stack.Screen
+        <Stack.Screen
           name="Detail"
+          options={{
+            headerStyle: {
+              backgroundColor: "#f9f9f9",
+            },
+            headerShadowVisible: false,
+            headerTintColor: "#3B82F6",
+          }} />
+        <Stack.Screen
+          name="Lainnya"
           options={{
             headerStyle: {
               backgroundColor: "#f9f9f9",

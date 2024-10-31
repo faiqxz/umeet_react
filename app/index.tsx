@@ -27,7 +27,7 @@ export default function HomeScreen() {
             </Text>
             <View style={styles.statContainer}>
               <View style={styles.statItem}>
-                <Text style={styles.statText}>15 Mengikuti</Text>
+                <Text style={styles.statText}>16 Mengikuti</Text>
               </View>
               <View style={styles.statItem}>
                 <Text style={styles.statText}>5 Sertifikat</Text>
@@ -74,7 +74,18 @@ export default function HomeScreen() {
               </View>
             </View>
             <View style={styles.exploreEvents}>
-              <Text style={styles.sectionTitle}>Jelajahi event</Text>
+              <View style={styles.othersEvent}>
+                <Text style={styles.sectionTitle}>Jelajahi event</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    router.push("/Lainnya");
+                  }}
+                >
+                  <View style={styles.statItem}>
+                    <Text style={styles.statText}>Lainnya</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
               <View style={styles.eventIcons}>
                 <TouchableOpacity
                   onPress={() => {
@@ -315,6 +326,11 @@ const styles = StyleSheet.create({
   },
   exploreEvents: {
     marginTop: 20,
+  },
+  othersEvent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   eventIcons: {
     flexDirection: "row",
