@@ -29,17 +29,13 @@ const Calendar = () => {
   return (
     <View style={styles.calendar}>
       <Text style={styles.sectionTitle}>Oktober</Text>
-      <FlatList
-        data={days}
-        renderItem={({ item }) => (
-          <View style={styles.dayHeader}>
-            <Text style={styles.dayText}>{item}</Text>
+      <View style={styles.daysContainer}>
+        {days.map((day) => (
+          <View key={day} style={styles.dayHeader}>
+            <Text style={styles.dayText}>{day}</Text>
           </View>
-        )}
-        keyExtractor={(item) => item}
-        horizontal
-        contentContainerStyle={styles.daysContainer}
-      />
+        ))}
+      </View>
       <FlatList
         data={monthDays}
         renderItem={({ item }) => (
@@ -59,6 +55,7 @@ const Calendar = () => {
 
 const styles = StyleSheet.create({
   calendar: {
+    marginTop: 10,
     padding: 16,
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -70,27 +67,35 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 8,
+    textAlign: 'center',
+    marginBottom: 16,
   },
   daysContainer: {
+    flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 8,
   },
   dayHeader: {
-    padding: 10,
+    flex: 1,
     alignItems: 'center',
   },
   dateContainer: {
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   dayContainer: {
     flex: 1,
-    padding: 10,
+    paddingVertical: 10,
     alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 4,
+    marginHorizontal: 2,
+    minWidth: 40, // Minimal lebar untuk setiap tanggal
   },
   today: {
-    backgroundColor: '#3B82F6', // Warna untuk tanggal hari ini
-    borderRadius: 10, // Bulatkan sudut
+    backgroundColor: '#f0f0f0', // Warna untuk tanggal hari ini
+    borderRadius: 10,
+    borderColor: "#3470A2",
+    borderWidth: 1,
   },
   dayText: {
     fontSize: 16,

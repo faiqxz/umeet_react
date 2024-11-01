@@ -20,79 +20,116 @@ export default function HomeScreen() {
         <View style={styles.content}>
           <View style={styles.card}>
             <View style={styles.content}>
-              <Text style={styles.title}>U-Meet</Text>
-              <Text style={styles.subtitle}>Selamat Datang, MOH RIZKY SINAGA!</Text>
-              <TouchableOpacity onPress={() => {
-                router.push("/Riwayat");
-              }}>
-                <Text style={styles.description}>
-                  RIZKY telah mengikuti{" "}
-                  <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
-                </Text>
-              </TouchableOpacity>
+              <View style={styles.headd}>
+                <Text style={styles.title}>U-Meet</Text>
+                <Image
+                  source={require("../assets/images/avapro.jpg")}
+                  style={styles.avatarProfile}
+                />
+              </View>
 
-              <View style={styles.statContainer}>
-                <View style={styles.statItem}>
-                  <Text style={styles.statText}>16 Mengikuti</Text>
-                </View>
-                <View style={styles.statItem}>
-                  <Text style={styles.statText}>5 Sertifikat</Text>
+              <View style={styles.headerContainer}>
+                <Text style={styles.subtitle}>Selamat Datang, MOHAMMAD RIZKY SINAGA!</Text>
+                <TouchableOpacity onPress={() => {
+                  router.push("/Riwayat");
+                }}>
+                  <Text style={styles.description}>
+                    Anda telah mengikuti{" "}
+                    <Text style={styles.highlight}>3 Kegiatan bulan ini</Text>
+                  </Text>
+                </TouchableOpacity>
+
+
+                <View style={styles.statsContainer}>
+                  <View style={styles.statItem}>
+                    <Text style={styles.statTitle}>Mengikuti</Text>
+                    <View style={styles.statValueContainer}>
+                      <Text style={styles.icon}>👨‍👦‍👦</Text>
+                      <Text style={styles.statValue}>10 Penyelenggara</Text>
+                    </View>
+                  </View>
+
+                  <View style={styles.divider} />
+
+                  <View style={styles.statItem}>
+                    <Text style={styles.statTitle}>Sertifikat</Text>
+                    <View style={styles.statValueContainer}>
+                      <Text style={styles.icon}>🎖️</Text>
+                      <Text style={styles.statValue}>3 Sertifikat</Text>
+                    </View>
+                  </View>
                 </View>
               </View>
 
               <View style={styles.upcomingEvents}>
                 <Text style={styles.sectionTitle}>Kegiatan mendatang</Text>
-                <TouchableOpacity style={[styles.button, showSavedCard ? styles.inactiveButton :styles]} 
-                  onPress={() => setShowSavedCard(false)}>
-                  <Text style={styles.buttonText}>Sedang diikuti</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonSecondary, showSavedCard && styles.activeButton]} 
-                  onPress={() => setShowSavedCard(true)}>
-                  <Text style={styles.buttonTextSecondary}>Disimpan</Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity style={[styles.button, showSavedCard ? styles.inactiveButton : styles]}
+                    onPress={() => setShowSavedCard(false)}>
+                    <Text style={styles.buttonText}>Sedang diikuti</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={[styles.buttonSecondary, showSavedCard && styles.activeButton]}
+                    onPress={() => setShowSavedCard(true)}>
+                    <Text style={styles.buttonTextSecondary}>Disimpan</Text>
+                  </TouchableOpacity>
+                </View>
 
                 {/* Tampilkan card berbeda jika showSavedCard true */}
                 {showSavedCard ? (
                   <View style={styles.eventCard}>
-                    <Text style={styles.eventTime}>Hari ini, 10:00</Text>
-                    <Text style={styles.eventTitle}>Workshop React Native</Text>
+
+                    <Text style={styles.eventTime}>Besok, 14:00</Text>
+                    <Text style={styles.eventTitle}>WEBINAR | React Native</Text>
                     <Text style={styles.eventOrganizer}>HIMSI Fasilkom Unsri</Text>
+                    <View style={styles.followedByContainer}>
+                      <Text style={styles.followedByText}>Diikuti oleh   </Text>
+                      <View style={styles.avatarContainer}>
+                        {/* Sample avatars */}
+                        <Image
+                          source={require("../assets/images/ava1.jpg")}
+                          style={styles.avatar}
+                        />
+                        <Image
+                          source={require("../assets/images/ava3.png")}
+                          style={styles.avatar}
+                        />
+                        <Image
+                          source={require("../assets/images/ava2.png")}
+                          style={styles.avatar}
+                        />
+                      </View>
+                    </View>
                   </View>
                 ) : (
                   <View style={styles.eventCard}>
                     <Text style={styles.eventTime}>Hari ini, 08:00</Text>
                     <Text style={styles.eventTitle}>IF FEST 2024</Text>
                     <Text style={styles.eventOrganizer}>HMIF Fasilkom Unsri</Text>
-                  </View>
-                )}
-                <View style={styles.container}>
-                  <View style={styles.followedByContainer}>
-                    <Text style={styles.followedByText}>Diikuti oleh   </Text>
-                    <View style={styles.avatarContainer}>
-                      {/* Sample avatars */}
-                      <Image
-                        source={require("../assets/images/ava1.jpg")}
-                        style={styles.avatar}
-                      />
-                      <Image
-                        source={require("../assets/images/ava2.png")}
-                        style={styles.avatar}
-                      />
-                      <Image
-                        source={require("../assets/images/ava3.png")}
-                        style={styles.avatar}
-                      />
-                      <Image
-                        source={require("../assets/images/ava1.jpg")}
-                        style={styles.avatar}
-                      />
-                      <Image
-                        source={require("../assets/images/ava3.png")}
-                        style={styles.avatar}
-                      />
+                    <View style={styles.followedByContainer}>
+                      <Text style={styles.followedByText}>Diikuti oleh   </Text>
+                      <View style={styles.avatarContainer}>
+                        {/* Sample avatars */}
+                        <Image
+                          source={require("../assets/images/ava1.jpg")}
+                          style={styles.avatar}
+                        />
+                        <Image
+                          source={require("../assets/images/ava2.png")}
+                          style={styles.avatar}
+                        />
+                        <Image
+                          source={require("../assets/images/ava3.png")}
+                          style={styles.avatar}
+                        />
+                        <Image
+                          source={require("../assets/images/ava1.jpg")}
+                          style={styles.avatar}
+                        />
+                      </View>
                     </View>
                   </View>
-                </View>
+                )}
+
               </View>
             </View>
           </View>
@@ -107,7 +144,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.statItem}>
-                    <Text style={styles.statText}>Lainnya</Text>
+                    <Text style={[styles.statText, { textDecorationLine: 'underline' }]}>Lainnya</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -118,7 +155,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={styles.icon}>📋</Text>
+                    <Text style={[styles.icon, { fontSize: 40 }]}>📋</Text>
                     <Text style={styles.iconText}>Terdaftar</Text>
                   </View>
                 </TouchableOpacity>
@@ -129,7 +166,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={styles.icon}>❤️</Text>
+                    <Text style={[styles.icon, { fontSize: 40 }]}>❤️</Text>
                     <Text style={styles.iconText}>Favorit</Text>
                   </View>
                 </TouchableOpacity>
@@ -141,7 +178,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={styles.icon}>⏳</Text>
+                    <Text style={[styles.icon, { fontSize: 40 }]}>⏳</Text>
                     <Text style={styles.iconText}>Riwayat</Text>
                   </View>
                 </TouchableOpacity>
@@ -152,7 +189,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={styles.icon}>🎓</Text>
+                    <Text style={[styles.icon, { fontSize: 40 }]}>🎓</Text>
                     <Text style={styles.iconText}>Sertifikat</Text>
                   </View>
                 </TouchableOpacity>
@@ -204,10 +241,10 @@ export default function HomeScreen() {
                     style={styles.recommendationImage}
                   />
                   <Text style={styles.recommendationTitle}>
-                    Open Recruitment Staff
+                    Open Recruitment Staff BEM UNSRI 2024
                   </Text>
                   <Text style={styles.recommendationSubTitle}>
-                    Open Recruitment Staff BEM
+                    Open Recruitment Staff BEM UNSRI 2024
                   </Text>
                 </View>
               </View>
@@ -242,19 +279,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     padding: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
-    elevation: 4,
+    elevation: 5,
   },
   content: {
     // padding: 10,
   },
+  headd: {
+    flexDirection: "row",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   title: {
-    fontSize: 24,
+    paddingTop: 20,
+    fontSize: 40,
     fontWeight: "bold",
-    color: "#1E90FF",
+    color: "#3470A2",
   },
   subtitle: {
     fontSize: 18,
@@ -265,7 +308,7 @@ const styles = StyleSheet.create({
     color: "#6b7280",
   },
   highlight: {
-    color: "#1E90FF",
+    color: "#3470A2",
     fontWeight: "bold",
   },
   statContainer: {
@@ -281,75 +324,124 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 10,
   },
+  statsContainer: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    marginTop: 10,
+    paddingLeft: 0,
+  },
+  statItem: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginRight: 10,
+  },
+  statTitle: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 5,
+    alignItems: 'flex-start',
+    textAlign: "left",
+  },
+  statValueContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 5,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  statValue: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#000',
+  },
+  divider: {
+    width: 1,
+    height: "100%",
+    backgroundColor: "#ddd",
+    marginHorizontal: 30,
+  },
   upcomingEvents: {
     marginTop: 20,
   },
   sectionTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row', // Mengatur agar elemen berada dalam baris
   },
   button: {
-    backgroundColor: "#1E90FF",
-    padding: 10,
-    borderRadius: 20,
+    backgroundColor: "#000000",
+    padding: 11,
+    borderRadius: 30,
     marginTop: 5,
     alignItems: "center",
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    elevation: 5,
   },
   buttonText: {
-    color: "#fff",
+    color: "#f0f0f0",
     fontWeight: "bold",
   },
   buttonSecondary: {
-    color: "#fff",
     backgroundColor: "#f0f0f0",
-    padding: 10,
-    borderRadius: 20,
+    padding: 11,
+    borderRadius: 30,
     marginTop: 5,
     alignItems: "center",
+    borderColor: "#000000",
+    borderWidth: 1,
+    marginLeft: 7,
   },
   buttonTextSecondary: {
-    color: "#fff",
+    color: "#f0f0f0",
     fontWeight: "bold",
   },
   activeButton: {
-    backgroundColor: "#1E90FF",
+    backgroundColor: "#000000",
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    elevation: 5,
   },
   // Gaya tombol untuk saat tidak aktif
   inactiveButton: {
     backgroundColor: "#f0f0f0",
+    borderColor: "#000000",
+    borderWidth: 1,
   },
   // Gaya teks tombol saat aktif
   buttonTextActive: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: "#f0f0f0",
   },
   // Gaya teks tombol saat tidak aktif
   buttonTextInactive: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: "#f0f0f0",
   },
   eventCard: {
     backgroundColor: "#fff",
     borderRadius: 10,
     padding: 10,
     marginTop: 10,
-    shadowColor: "#000",
+    shadowColor: "#000000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    elevation: 5,
   },
   eventTime: {
     fontSize: 12,
     color: "#6b7280",
   },
   eventTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
   },
   eventOrganizer: {
-    fontSize: 14,
+    fontSize: 15,
     color: "#6b7280",
   },
   followedByContainer: {
@@ -374,9 +466,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: -5,
   },
+  avatarProfile: {
+    width: 40,
+    height: 40,
+    borderRadius: 30,
+    borderColor: '#3470A2',
+  },
+  headerContainer: {
+    alignItems: "flex-start",
+  },
   exploreEvents: {
-    marginTop: 20,
-    // padding: 20,
+    marginTop: 10,
+    paddingEnd: 10,
+    paddingStart: 10,
   },
   othersEvent: {
     flexDirection: 'row',
@@ -393,34 +495,43 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 24,
-    color: "#1E90FF",
+    color: "#3470A2",
   },
   iconText: {
     fontSize: 12,
   },
   organizers: {
     marginTop: 20,
+    marginLeft: 10,
+    marginRight: 10,
   },
   organizerLogos: {
+    marginTop: 10,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginVertical: 10,
   },
   organizerLogo: {
     width: 50,
-    height: 50,
+    height: 52,
     borderRadius: 5,
+    marginHorizontal: 5,
   },
   recommendations: {
     marginTop: 20,
+    marginLeft: 10,
+    marginRight: 10,
   },
   recommendationContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
   recommendationCard: {
+    marginTop: 10,
     backgroundColor: "#fff",
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: "#000000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -446,5 +557,8 @@ const styles = StyleSheet.create({
   },
   calendar: {
     marginTop: 20,
+    marginLeft: 10,
+    marginRight: 15,
+    marginBottom: 20,
   },
 });
