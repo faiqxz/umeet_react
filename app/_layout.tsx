@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen"; // Only one import for SplashScreen
+import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Terdaftar from "./Terdaftar";
@@ -49,17 +49,17 @@ export default function RootLayout() {
               backgroundColor: "#f9f9f9",
             },
             headerShadowVisible: false,
-            headerTintColor: "#3B82F6",
+            headerTintColor: "#3470A2",
           }}
         />
         <Stack.Screen
           name="Favorit"
           options={{
             headerStyle: {
-              backgroundColor: "#f9f9f9",
+              backgroundColor: "#3470A2",
             },
-            headerShadowVisible: false,
-            headerTintColor: "#3B82F6",
+            headerShadowVisible: true,
+            headerTintColor: "#fff",
           }}
         />
         <Stack.Screen
@@ -69,7 +69,7 @@ export default function RootLayout() {
               backgroundColor: "#f9f9f9",
             },
             headerShadowVisible: false,
-            headerTintColor: "#3B82F6",
+            headerTintColor: "#3470A2",
           }}
         />
         <Stack.Screen
@@ -79,7 +79,7 @@ export default function RootLayout() {
               backgroundColor: "#f9f9f9",
             },
             headerShadowVisible: false,
-            headerTintColor: "#3B82F6",
+            headerTintColor: "#3470A2",
           }} />
         <Stack.Screen
           name="Detail"
@@ -88,7 +88,7 @@ export default function RootLayout() {
               backgroundColor: "#f9f9f9",
             },
             headerShadowVisible: false,
-            headerTintColor: "#3B82F6",
+            headerTintColor: "#3470A2",
           }} />
         <Stack.Screen
           name="Lainnya"
@@ -97,7 +97,7 @@ export default function RootLayout() {
               backgroundColor: "#f9f9f9",
             },
             headerShadowVisible: false,
-            headerTintColor: "#3B82F6",
+            headerTintColor: "#3470A2",
           }} />
       </Stack>
     </ThemeProvider>

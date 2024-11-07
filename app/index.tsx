@@ -16,7 +16,7 @@ export default function HomeScreen() {
   const [showSavedCard, setShowSavedCard] = useState<boolean>(false);
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView>
+      <ScrollView style={{ width: "100%" }}>
         <View style={styles.content}>
           <View style={styles.card}>
             <View style={styles.content}>
@@ -41,20 +41,20 @@ export default function HomeScreen() {
 
 
                 <View style={styles.statsContainer}>
-                  <View style={styles.statItem}>
+                  <View style={styles.stattItem}>
                     <Text style={styles.statTitle}>Mengikuti</Text>
                     <View style={styles.statValueContainer}>
-                      <Text style={styles.icon}>👨‍👦‍👦</Text>
+                      <Text style={styles.iconn}>👨‍👦‍👦</Text>
                       <Text style={styles.statValue}>10 Penyelenggara</Text>
                     </View>
                   </View>
 
                   <View style={styles.divider} />
 
-                  <View style={styles.statItem}>
+                  <View style={styles.stattItem}>
                     <Text style={styles.statTitle}>Sertifikat</Text>
                     <View style={styles.statValueContainer}>
-                      <Text style={styles.icon}>🎖️</Text>
+                      <Text style={styles.iconn}>🎖️</Text>
                       <Text style={styles.statValue}>3 Sertifikat</Text>
                     </View>
                   </View>
@@ -64,15 +64,20 @@ export default function HomeScreen() {
               <View style={styles.upcomingEvents}>
                 <Text style={styles.sectionTitle}>Kegiatan mendatang</Text>
                 <View style={styles.buttonContainer}>
-                  <TouchableOpacity style={[styles.button, showSavedCard ? styles.inactiveButton : styles]}
-                    onPress={() => setShowSavedCard(false)}>
+                  <TouchableOpacity
+                    style={[styles.button, showSavedCard ? styles.inactiveButton : null]}  // Perbaiki bagian ini
+                    onPress={() => setShowSavedCard(false)}
+                  >
                     <Text style={styles.buttonText}>Sedang diikuti</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={[styles.buttonSecondary, showSavedCard && styles.activeButton]}
-                    onPress={() => setShowSavedCard(true)}>
+                  <TouchableOpacity
+                    style={[styles.buttonSecondary, showSavedCard && styles.activeButton]}  // Ini sudah benar
+                    onPress={() => setShowSavedCard(true)}
+                  >
                     <Text style={styles.buttonTextSecondary}>Disimpan</Text>
                   </TouchableOpacity>
                 </View>
+
 
                 {/* Tampilkan card berbeda jika showSavedCard true */}
                 {showSavedCard ? (
@@ -155,7 +160,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={[styles.icon, { fontSize: 40 }]}>📋</Text>
+                    <Text style={[styles.iconn, { fontSize: 40 }]}>📋</Text>
                     <Text style={styles.iconText}>Terdaftar</Text>
                   </View>
                 </TouchableOpacity>
@@ -166,7 +171,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={[styles.icon, { fontSize: 40 }]}>❤️</Text>
+                    <Text style={[styles.iconn, { fontSize: 40 }]}>❤️</Text>
                     <Text style={styles.iconText}>Favorit</Text>
                   </View>
                 </TouchableOpacity>
@@ -178,7 +183,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={[styles.icon, { fontSize: 40 }]}>⏳</Text>
+                    <Text style={[styles.iconn, { fontSize: 40 }]}>⏳</Text>
                     <Text style={styles.iconText}>Riwayat</Text>
                   </View>
                 </TouchableOpacity>
@@ -189,7 +194,7 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.iconContainer}>
-                    <Text style={[styles.icon, { fontSize: 40 }]}>🎓</Text>
+                    <Text style={[styles.iconn, { fontSize: 40 }]}>🎓</Text>
                     <Text style={styles.iconText}>Sertifikat</Text>
                   </View>
                 </TouchableOpacity>
@@ -331,7 +336,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 0,
   },
-  statItem: {
+  stattItem: {
     flex: 1,
     alignItems: 'flex-start',
     marginRight: 10,
@@ -493,7 +498,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     alignItems: "center",
   },
-  icon: {
+  iconn: {
     fontSize: 24,
     color: "#3470A2",
   },
