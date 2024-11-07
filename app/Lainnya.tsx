@@ -18,13 +18,13 @@ export default function HomeScreen() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
                 <ScrollView>
-                    <TextInput
-                        style={styles.searchBar}
-                        placeholder="Cari event..."
-                        onChangeText={(text: string) => setSearchQuery(text)}
-                        value={searchQuery}
-                    />
                     <View style={styles.card}>
+                        <TextInput
+                            style={styles.searchBar}
+                            placeholder="Cari event..."
+                            onChangeText={(text: string) => setSearchQuery(text)}
+                            value={searchQuery}
+                        />
                         <View style={styles.content}>
                             <View style={styles.eventIcons}>
                                 <TouchableOpacity
@@ -33,7 +33,7 @@ export default function HomeScreen() {
                                     }}
                                 >
                                     <View style={styles.iconContainer}>
-                                        <Text style={styles.icon}>📋</Text>
+                                        <Text style={[styles.icon, { fontSize: 40 }]}>📋</Text>
                                         <Text style={styles.iconText}>Terdaftar</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -44,7 +44,7 @@ export default function HomeScreen() {
                                     }}
                                 >
                                     <View style={styles.iconContainer}>
-                                        <Text style={styles.icon}>❤️</Text>
+                                        <Text style={[styles.icon, { fontSize: 40 }]}>❤️</Text>
                                         <Text style={styles.iconText}>Favorit</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -56,7 +56,7 @@ export default function HomeScreen() {
                                     }}
                                 >
                                     <View style={styles.iconContainer}>
-                                        <Text style={styles.icon}>⏳</Text>
+                                        <Text style={[styles.icon, { fontSize: 40 }]}>⏳</Text>
                                         <Text style={styles.iconText}>Riwayat</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -67,7 +67,7 @@ export default function HomeScreen() {
                                     }}
                                 >
                                     <View style={styles.iconContainer}>
-                                        <Text style={styles.icon}>🎓</Text>
+                                        <Text style={[styles.icon, { fontSize: 40 }]}>🎓</Text>
                                         <Text style={styles.iconText}>Sertifikat</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -113,26 +113,26 @@ export default function HomeScreen() {
                                 <View style={styles.recommendationContainer}>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/pertamina.png")}
+                                            source={require("../assets/images/genbi.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
-                                            Pertamina Goes to Campus
+                                            Beasiswa Bank Indonesia 2024
                                         </Text>
                                         <Text style={styles.recommendationSubTitle}>
-                                            PNRE University Outreach & Engagement
+                                            Generasi Baru Indonesia (GENBI) SUMSEL 2024
                                         </Text>
                                     </View>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/oprecbem.png")}
+                                            source={require("../assets/images/sobatbumi.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
-                                            Open Recruitment Staff
+                                            Beasiswa Pertamina SobatBumi 2024
                                         </Text>
                                         <Text style={styles.recommendationSubTitle}>
-                                            Open Recruitment Staff BEM
+                                            Saatnya menjadi bagian dari Keluarga Besar Beasiswa Sobat Bumi
                                         </Text>
                                     </View>
                                 </View>
@@ -180,7 +180,7 @@ export default function HomeScreen() {
     const styles = StyleSheet.create({
         searchBar: {
             height: 50, // Tinggi sedikit lebih besar untuk tampilan lebih modern
-            borderColor: '#007AFF', // Ganti dengan warna biru yang lebih cerah
+            borderColor: '#3470A2', // Ganti dengan warna biru yang lebih cerah
             borderWidth: 1,
             borderRadius: 15, // Sudut yang lebih halus
             paddingHorizontal: 15, // Padding yang lebih baik
