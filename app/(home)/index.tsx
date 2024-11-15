@@ -16,7 +16,7 @@ import { supabase } from "@/lib/supabase";
 export default function HomeScreen() {
   const { profile } = useAuth()
   console.log(profile)
-  // State untuk mengatur apakah card disimpan ditampilkan
+
   const [showSavedCard, setShowSavedCard] = useState<boolean>(false);
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -25,23 +25,25 @@ export default function HomeScreen() {
           <View style={styles.card}>
             <View style={styles.content}>
               <View style={styles.headd}>
+                <Text style={styles.title}>
+                  <Text style={styles.logoU}>U-</Text>
+                  <Text style={styles.logoMeet}>Meet</Text>
+                </Text>
+
                 <TouchableOpacity
-                  onPress={async () => {
-                    await supabase.auth.signOut()
+                  onPress={() => {
+                    router.push("/Profil");
                   }}>
-                  <Text>
-                    Sign Out
-                  </Text>
+                  <Image
+                    source={require("../../assets/images/avapro.jpg")}
+                    style={styles.avatarProfile}
+                  />
                 </TouchableOpacity>
-                <Text style={styles.title}>U-Meet</Text>
-                <Image
-                  source={require("../../assets/images/avapro.jpg")}
-                  style={styles.avatarProfile}
-                />
               </View>
 
+              {/* {profile.full_name.toUpperCase()} */}
               <View style={styles.headerContainer}>
-                <Text style={styles.subtitle}>Selamat Datang, {profile.full_name.toUpperCase()}!</Text>
+                <Text style={styles.subtitle}>Selamat Datang, MOHAMMAD RIZKY!</Text>
                 <TouchableOpacity onPress={() => {
                   router.push("/Riwayat");
                 }}>
@@ -384,7 +386,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "600",
   },
   buttonContainer: {
     flexDirection: 'row', // Mengatur agar elemen berada dalam baris
@@ -577,5 +579,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 15,
     marginBottom: 20,
+  },
+  logoU: {
+    color: '#DDA915',
+  },
+  logoMeet: {
+    color: '#3470A2',
   },
 });

@@ -43,10 +43,10 @@ export default function RootLayout() {
           name="Favorit"
           options={{
             headerStyle: {
-              backgroundColor: "#3470A2",
+              backgroundColor: "#f9f9f9",
             },
             headerShadowVisible: true,
-            headerTintColor: "#fff",
+            headerTintColor: "#3470A2",
           }}
         />
         <Stack.Screen
@@ -79,6 +79,15 @@ export default function RootLayout() {
           }} />
         <Stack.Screen
           name="Lainnya"
+          options={{
+            headerStyle: {
+              backgroundColor: "#f9f9f9",
+            },
+            headerShadowVisible: false,
+            headerTintColor: "#3470A2",
+          }} />
+          <Stack.Screen
+          name="Profil"
           options={{
             headerStyle: {
               backgroundColor: "#f9f9f9",
