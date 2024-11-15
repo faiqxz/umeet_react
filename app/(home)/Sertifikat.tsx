@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import sifestImage from "../assets/images/sifest.png";
-import iffestImage from "../assets/images/iffest.png"; // Example: Replace with correct image
+import sifestImage from "../../assets/images/sifest.png";
+import iffestImage from "../../assets/images/iffest.png"; // Example: Replace with correct image
 
 const events = [
   {

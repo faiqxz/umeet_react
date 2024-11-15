@@ -1,12 +1,8 @@
 import { router } from "expo-router";
 import React from "react";
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
-import { FaChevronLeft } from "react-icons/fa";
+import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import iffestImage from "../assets/images/iffest.png";
-import sifestImage from "../assets/images/sifest.png";
-import intelImage from "../assets/images/intel.png";
 
 const HomeScreen = () => {
   return (
@@ -22,7 +18,7 @@ const HomeScreen = () => {
           {/* Event 1 */}
           <View style={styles.eventCard}>
             <Image
-              source={require("../assets/images/sifest.png")}
+              source={require("../../assets/images/sifest.png")}
               style={styles.eventImage}
             />
             <View style={styles.eventInfo}>
@@ -66,7 +62,7 @@ const HomeScreen = () => {
       {/* Event 2 */}
       <View style={styles.eventCard}>
         <Image
-          source={require("../assets/images/iffest.png")}
+          source={require("../../assets/images/iffest.png")}
           style={styles.eventImage}
         />
         <View style={styles.eventInfo}>
@@ -109,7 +105,7 @@ const HomeScreen = () => {
       {/* Event 3 */}
       <View style={styles.eventCard}>
         <Image
-          source={require("../assets/images/Intel.png")}
+          source={require("../../assets/images/Intel.png")}
           style={styles.eventImage}
         />
         <View style={styles.eventInfo}>
