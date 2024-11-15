@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 
 // Importing images
-import sifestImage from "../assets/images/sifest.png";
-import uxResearchImage from "../assets/images/UX.png"; // Example: Replace with correct image
-import pertaminaImage from "../assets/images/pertamina.png";
+import sifestImage from "../../assets/images/sifest.png";
+import uxResearchImage from "../../assets/images/UX.png"; // Example: Replace with correct image
+import pertaminaImage from "../../assets/images/pertamina.png";
 
 const HomeScreen = () => {
   return (
