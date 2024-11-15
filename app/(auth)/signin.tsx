@@ -11,6 +11,7 @@ import { Stack } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, Button, Touchable, TouchableOpacity } from 'react-native';
 import { supabase } from '../../lib/supabase';
+import * as Font from 'expo-font';
 
 export default function SignInScreen() {
   const [email, setEmail] = useState('');
@@ -53,14 +54,14 @@ export default function SignInScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>
-          Sign In to <Text style={styles.logoU}>U-</Text>
-          <Text style={styles.logoTalk}>Meet</Text>
+          Selamat Datang di <Text style={styles.logoU}>U-</Text>
+          <Text style={styles.logoMeet}>Meet</Text>
         </Text>
 
-        <Text style={styles.label}>Full Name</Text>
+        <Text style={styles.label}>Nama Lengkap</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your full name"
+          placeholder="Masukkan nama lengkap"
           value={fullName}
           onChangeText={(text) => setFullName(text)}
           autoCapitalize="words"
@@ -70,17 +71,17 @@ export default function SignInScreen() {
         <Text style={styles.label}>Email</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your email"
+          placeholder="Masukkan email"
           value={email}
           onChangeText={(text) => setEmail(text)}
           autoCapitalize="none"
           keyboardType="email-address"
         />
 
-        <Text style={styles.label}>Password</Text>
+        <Text style={styles.label}>Kata Sandi</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your password"
+          placeholder="Masukkan kata sandi"
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
@@ -91,7 +92,7 @@ export default function SignInScreen() {
         <TouchableOpacity
           disabled={loading}
           style={{
-            backgroundColor:"black",
+            backgroundColor:"#24A",
             padding:16,
             marginBottom:6,
             borderRadius:10,
@@ -103,14 +104,14 @@ export default function SignInScreen() {
               color:"white",
               fontWeight:"bold",
             }}>
-              SIGN IN
+              MASUK
             </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           disabled={loading}
           style={{
-            backgroundColor:"black",
+            backgroundColor:"#DDA915",
             padding:16,
             marginBottom:6,
             borderRadius:10,
@@ -122,7 +123,7 @@ export default function SignInScreen() {
               color:"white",
               fontWeight:"bold",
             }}>
-              SIGN UP
+              DAFTAR
             </Text>
         </TouchableOpacity>
       </View>
@@ -158,11 +159,9 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   logoU: {
-    fontFamily: 'Outfit_700Bold',
     color: '#DDA915',
   },
-  logoTalk: {
-    fontFamily: 'Outfit_700Bold',
+  logoMeet: {
     color: '#3470A2',
   },
 });
