@@ -81,7 +81,7 @@ export default function HomeScreen() {
                                 <View style={styles.recommendationContainer}>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/pertamina.png")}
+                                            source={require("../../assets/images/pertamina.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
@@ -93,7 +93,7 @@ export default function HomeScreen() {
                                     </View>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/oprecbem.png")}
+                                            source={require("../../assets/images/oprecbem.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
@@ -113,7 +113,7 @@ export default function HomeScreen() {
                                 <View style={styles.recommendationContainer}>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/genbi.png")}
+                                            source={require("../../assets/images/genbi.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
@@ -125,7 +125,7 @@ export default function HomeScreen() {
                                     </View>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/sobatbumi.png")}
+                                            source={require("../../assets/images/sobatbumi.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
@@ -145,7 +145,7 @@ export default function HomeScreen() {
                                 <View style={styles.recommendationContainer}>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/pertamina.png")}
+                                            source={require("../../assets/images/pertamina.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
@@ -157,7 +157,7 @@ export default function HomeScreen() {
                                     </View>
                                     <View style={styles.recommendationCard}>
                                         <Image
-                                            source={require("../assets/images/oprecbem.png")}
+                                            source={require("../../assets/images/oprecbem.png")}
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>

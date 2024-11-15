@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native';
-import sifestImage from "../assets/images/sifest.png";
-import iffestImage from "../assets/images/iffest.png"; // Example: Replace with correct image
-import uxResearchImage from "../assets/images/UX.png"; // Example: Replace with correct image
+import sifestImage from "../../assets/images/sifest.png";
+import iffestImage from "../../assets/images/iffest.png"; // Example: Replace with correct image
+import uxResearchImage from "../../assets/images/UX.png"; // Example: Replace with correct image
 
 
 const events = [
