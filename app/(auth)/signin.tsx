@@ -11,7 +11,6 @@ import { Stack } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, Button, Touchable, TouchableOpacity } from 'react-native';
 import { supabase } from '../../lib/supabase';
-import * as Font from 'expo-font';
 
 export default function SignInScreen() {
   const [email, setEmail] = useState('');
