@@ -43,7 +43,7 @@ export default function HomeScreen() {
 
               {/* {profile.full_name.toUpperCase()} */}
               <View style={styles.headerContainer}>
-                <Text style={styles.subtitle}>Selamat Datang, MOHAMMAD RIZKY!</Text>
+                <Text style={styles.subtitle}>Selamat Datang, {profile.full_name.toUpperCase()} MOHAMMAD RIZKY!</Text>
                 <TouchableOpacity onPress={() => {
                   router.push("/Riwayat");
                 }}>
