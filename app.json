@@ -30,10 +30,13 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "react-native-video",
+      "expo-font"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "newArchEnabled": true
     }
   }
 }
