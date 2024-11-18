@@ -1,15 +1,6 @@
-/**
- * Sign in page
- * @author: @fahmousss
- * @version: 1.0.0
- * @since: 2024-11-12
- * @assigned_to : @ini_trik
- * @description : Sign in page
- **/
-
 import { Stack } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert, Button, Touchable, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { supabase } from '../../lib/supabase';
 
 export default function SignInScreen() {
@@ -25,7 +16,11 @@ export default function SignInScreen() {
       password: password,
     });
 
-    if (error) Alert.alert(error.message);
+    if (error) {
+      Alert.alert(error.message);
+    } else {
+      // Handle successful login, navigate or display success message
+    }
     setLoading(false);
   }
 
@@ -44,10 +39,15 @@ export default function SignInScreen() {
       },
     });
 
-    if (error) Alert.alert(error.message);
+    if (error) {
+      Alert.alert(error.message);
+    } else {
+      // Handle successful sign up, navigate or display success message
+    }
 
     setLoading(false);
   }
+
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
@@ -88,42 +88,30 @@ export default function SignInScreen() {
           autoCapitalize="none"
         />
 
+        {/* Tombol Sign In */}
         <TouchableOpacity
           disabled={loading}
-          style={{
-            backgroundColor:"#24A",
-            padding:16,
-            marginBottom:6,
-            borderRadius:10,
-            alignItems:'center',
-          }}
-          onPress={signInWithEmail}>
-            <Text
-            style={{
-              color:"white",
-              fontWeight:"bold",
-            }}>
-              MASUK
-            </Text>
+          style={[styles.button, { backgroundColor: '#24A' }]}
+          onPress={signInWithEmail}
+        >
+          {loading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>MASUK</Text>
+          )}
         </TouchableOpacity>
 
+        {/* Tombol Sign Up */}
         <TouchableOpacity
           disabled={loading}
-          style={{
-            backgroundColor:"#DDA915",
-            padding:16,
-            marginBottom:6,
-            borderRadius:10,
-            alignItems:'center',
-          }}
-          onPress={signUpWithEmail}>
-            <Text
-            style={{
-              color:"white",
-              fontWeight:"bold",
-            }}>
-              DAFTAR
-            </Text>
+          style={[styles.button, { backgroundColor: '#DDA915' }]}
+          onPress={signUpWithEmail}
+        >
+          {loading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>DAFTAR</Text>
+          )}
         </TouchableOpacity>
       </View>
     </>
@@ -162,5 +150,15 @@ const styles = StyleSheet.create({
   },
   logoMeet: {
     color: '#3470A2',
+  },
+  button: {
+    padding: 16,
+    marginBottom: 6,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
