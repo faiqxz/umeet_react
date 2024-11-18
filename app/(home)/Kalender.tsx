@@ -1,9 +1,13 @@
-// Calendar.js
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
-// Komponen untuk menampilkan satu hari
-const Day = ({ date, isToday, onPress }) => (
+interface DayProps {
+  date: number;
+  isToday: boolean;
+  onPress: () => void;
+}
+
+const Day: React.FC<DayProps> = ({ date, isToday, onPress }) => (
   <TouchableOpacity style={[styles.dayContainer, isToday && styles.today]} onPress={onPress}>
     <Text style={styles.dayText}>{date}</Text>
   </TouchableOpacity>
@@ -12,23 +16,24 @@ const Day = ({ date, isToday, onPress }) => (
 const Calendar = () => {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  // Mengambil tanggal saat ini
   const today = new Date();
-  const currentDate = today.getDate(); // Hari bulan
-  const currentMonth = today.getMonth(); // Bulan (0-11)
-  const currentYear = today.getFullYear(); // Tahun
+  const currentDate = today.getDate();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
 
-  // Misalnya, kita akan menampilkan bulan ini
-  const monthDays = Array.from({ length: 31 }, (_, i) => i + 1); // Tanggal 1-31
+  const monthDays = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-  const handlePress = (date) => {
-    console.log(`Tanggal ${date} diklik!`);
-    // Anda dapat menambahkan logika lain sesuai kebutuhan di sini
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+
+  const daysArray = [...Array(firstDayOfMonth).fill(null), ...Array.from({ length: monthDays }, (_, i) => i + 1)];
+
+  const handlePress = (date: number) => {
+    console.log(`Tanggal ${date} diklik oleh user!`);
   };
 
   return (
     <View style={styles.calendar}>
-      <Text style={styles.sectionTitle}>Oktober</Text>
+      <Text style={styles.sectionTitle}>{today.toLocaleString('default', { month: 'long' })} {currentYear}</Text>
       <View style={styles.daysContainer}>
         {days.map((day) => (
           <View key={day} style={styles.dayHeader}>
@@ -37,16 +42,20 @@ const Calendar = () => {
         ))}
       </View>
       <FlatList
-        data={monthDays}
+        data={daysArray}
         renderItem={({ item }) => (
-          <Day 
-            date={item} 
-            isToday={item === currentDate} 
-            onPress={() => handlePress(item)} 
-          />
+          item ? (
+            <Day 
+              date={item} 
+              isToday={item === currentDate} 
+              onPress={() => handlePress(item)} 
+            />
+          ) : (
+            <View style={styles.emptyDay} /> 
+          )
         )}
-        keyExtractor={(item) => item.toString()}
-        numColumns={7} // 7 kolom untuk 7 hari
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={7}
         contentContainerStyle={styles.dateContainer}
       />
     </View>
@@ -66,21 +75,24 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 16,
+    fontFamily: 'Outfit-Medium',
   },
   daysContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between', 
     marginBottom: 8,
   },
   dayHeader: {
     flex: 1,
     alignItems: 'center',
+    paddingVertical: 8,
+    justifyContent: 'center', 
   },
   dateContainer: {
-    justifyContent: 'space-around',
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
   dayContainer: {
     flex: 1,
@@ -89,18 +101,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 4,
     marginHorizontal: 2,
-    minWidth: 40, // Minimal lebar untuk setiap tanggal
+    minWidth: 40,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 5,
   },
   today: {
-    backgroundColor: '#f0f0f0', // Warna untuk tanggal hari ini
+    backgroundColor: '#f0f0f0',
     borderRadius: 10,
-    borderColor: "#3470A2",
-    borderWidth: 1,
+    borderColor: '#3470A2',
+    borderWidth: 2,
   },
   dayText: {
     fontSize: 16,
     fontWeight: '500',
     color: '#000',
+    fontFamily: 'Outfit-Regular',
+  },
+  emptyDay: {
+    flex: 1,
+    marginVertical: 4,
+    marginHorizontal: 2,
+    minWidth: 40,
   },
 });
 
