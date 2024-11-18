@@ -144,9 +144,18 @@ export default function HomeScreen() {
 
                   {showSavedCard ? (
                     <View style={styles.eventCard}>
-                      <Text style={styles.eventTime}>Besok, 14:00</Text>
+                      <ImageBackground
+                        source={require("../../assets/images/element.png")}
+                        resizeMode="cover"
+                        style={styles.backgroundImage}
+                        imageStyle={{
+                          borderBottomLeftRadius: 15,
+                          borderBottomRightRadius: 15, // Sesuaikan jika card bawah rounded
+                        }}
+                      ></ImageBackground>
+                      <Text style={styles.eventTime}>Besok, 14:00 WIB</Text>
                       <Text style={styles.eventTitle}>WEBINAR | React Native</Text>
-                      <Text style={styles.eventOrganizer}>HIMSI Fasilkom Unsri</Text>
+                      <Text style={styles.eventOrganizer}>👨‍👦‍👦 HIMSI Fasilkom Unsri</Text>
 
                       <View style={styles.followedByContainer}>
                         <Text style={styles.followedByText}>Diikuti oleh   </Text>
@@ -168,9 +177,9 @@ export default function HomeScreen() {
                     </View>
                   ) : (
                     <View style={styles.eventCard}>
-                      <Text style={styles.eventTime}>Hari ini, 08:00</Text>
+                      <Text style={styles.eventTime}>Hari ini, 08:00 WIB</Text>
                       <Text style={styles.eventTitle}>IF FEST 2024</Text>
-                      <Text style={styles.eventOrganizer}>HMIF Fasilkom Unsri</Text>
+                      <Text style={styles.eventOrganizer}>👨‍👦‍👦 HMIF Fasilkom Unsri</Text>
 
                       <View style={styles.followedByContainer}>
                         <Text style={styles.followedByText}>Diikuti oleh   </Text>
@@ -200,7 +209,7 @@ export default function HomeScreen() {
 
               </View>
               {/* Selesai Atas */}
-              </ImageBackground>
+            </ImageBackground>
           </View>
           {/* Selesai Card */}
 
@@ -376,14 +385,14 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
     overflow: "hidden", // Penting agar gambar tetap di dalam card
-    elevation: 4, 
+    elevation: 4,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
   },
   backgroundImage: {
-    flex: 1, 
+    flex: 1,
     opacity: 0.9
   },
   content: {
@@ -550,12 +559,16 @@ const styles = StyleSheet.create({
   eventCard: {
     backgroundColor: "#fff",
     borderRadius: 20,
+    borderStartStartRadius: 50,
+    borderEndEndRadius: 50,
     padding: 10,
+    paddingTop: 20,
+    paddingStart: 30,
     marginTop: 10,
-    shadowColor: "#000000",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    elevation: 5,
+    elevation: 7,
   },
   eventTime: {
     fontSize: 12,
@@ -564,7 +577,8 @@ const styles = StyleSheet.create({
   },
   eventTitle: {
     fontSize: 18,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: 'Outfit-Semibold',
+    color: '#3470A2',
   },
   eventOrganizer: {
     fontSize: 15,
@@ -580,7 +594,7 @@ const styles = StyleSheet.create({
   },
   followedByText: {
     fontFamily: 'Outfit-Regular',
-    fontSize: 16,
+    fontSize: 15,
     color: "#6b7280",
   },
   avatarContainer: {
