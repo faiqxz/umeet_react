@@ -95,7 +95,7 @@ export default function RootLayout() {
           },
           headerShadowVisible: true,
           headerTintColor: "#000",
-          title: " ",
+          title: "SI FEST 2024",
           headerTitleStyle: {
             fontFamily: 'Outfit-Semibold',
             fontSize: 18,

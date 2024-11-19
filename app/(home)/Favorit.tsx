@@ -1,164 +1,229 @@
-import React from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { StyleSheet } from 'react-native';
-import sifestImage from "../../assets/images/sifest.png";
-import iffestImage from "../../assets/images/iffest.png"; // Example: Replace with correct image
-import uxResearchImage from "../../assets/images/UX.png"; // Example: Replace with correct image
-
-
-const events = [
-    {
-        date: "12 November 2023",
-        title: "SI Fest 2023",
-        description: "Artificial Intelligence, Is It A Good Thing Or Bad Thing?",
-        organizer: "HIMSI FASILKOM UNSRI",
-        image: sifestImage,
-        attendees: 3
-    },
-    {
-        date: "15 April 2024",
-        title: "IFFEST 2024",
-        description: "Ignite The Competition: Sparks Of Informatics",
-        organizer: "HIMIF FASILKOM UNSRI",
-        image: iffestImage,
-        attendees: 4
-    },
-    {
-        date: "12 November 2023",
-        title: "Mastering Your UX Research",
-        description: "How to Conduct User Research",
-        organizer: "GDSC UNSRI",
-        image: uxResearchImage,
-        attendees: 5
-    },
-];
-
-const EventCard = ({ event }) => (
-    <View style={styles.card}>
-        <Image source={event.image} style={styles.eventImage} />
-        <View style={styles.eventContent}>
-            <View style={styles.eventHeader}>
-                <Text style={styles.eventDate}>{event.date}</Text>
-                <View style={styles.attendees}>
-                    {Array.from({ length: event.attendees }).map((_, index) => (
-                        <Image
-                            key={index}
-                            source={{ uri: "https://placehold.co/24x24" }}
-                            style={styles.attendeeAvatar}
-                        />
-                    ))}
-                </View>
-            </View>
-            <Text style={styles.eventTitle}>{event.title}</Text>
-            <Text style={styles.eventDescription}>{event.description}</Text>
-            <Text style={styles.eventOrganizer}>
-                <Text style={styles.icon}>👥</Text> {event.organizer}
-            </Text>
-            <View style={styles.actions}>
-                <TouchableOpacity>
-                    <Text style={styles.actionIcon}>🔖</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.actionIcon}>🔗</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    </View>
-);
-
+import { router } from "expo-router";
+import React, { useState } from "react";
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Image } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const HomeScreen = () => {
+    type EventKeys = 'sifest' | 'intel';
+
+    const [favoriteStatus, setFavoriteStatus] = useState<Record<EventKeys, boolean>>({
+        sifest: true,
+        intel: true,
+    });
+
+    const toggleFavorite = (eventKey: EventKeys) => {
+        setFavoriteStatus((prevState) => ({
+            ...prevState,
+            [eventKey]: !prevState[eventKey],
+        }));
+    };
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            
-            {events.map((event, index) => (
-                <EventCard key={index} event={event} />
-            ))}
+            <View style={styles.eventList}>
+                {/* SI FEST */}
+                <TouchableOpacity
+                    onPress={() => {
+                        router.push("/Detail");
+                    }}
+                >
+                    <View style={styles.eventCard}>
+                        <View style={styles.eventImageContainer}>
+                            <Image
+                                source={require("../../assets/images/sifest.png")}
+                                style={styles.eventImage}
+                            />
+                        </View>
+                        <View style={styles.eventInfo}>
+                            <View style={styles.eventHeader}>
+                                <Text style={styles.eventDate}>12 November 2023</Text>
+                                <View style={styles.avatarContainer}>
+                                    <Image
+                                        source={require("../../assets/images/ava1.jpg")}
+                                        style={styles.avatar}
+                                    />
+                                    <Image
+                                        source={require("../../assets/images/ava2.png")}
+                                        style={styles.avatar}
+                                    />
+                                    <Image
+                                        source={require("../../assets/images/ava3.png")}
+                                        style={styles.avatar}
+                                    />
+                                </View>
+                            </View>
+                            <Text style={styles.eventTitle}>SI FEST 2023</Text>
+                            <Text style={styles.eventDescription}>
+                                Artificial Intelligence, Is It A Good Thing Or Bad Thing?
+                            </Text>
+                            <View style={styles.eventBottom}>
+                                <Text style={styles.eventOrganizer}>👨‍👦‍👦 HIMSI FASILKOM UNSRI</Text>
+                                <TouchableOpacity
+                                    style={styles.iconButton}
+                                    onPress={() => toggleFavorite("sifest")}
+                                >
+                                    <Icon
+                                        name={favoriteStatus.sifest ? "favorite" : "favorite-border"}
+                                        size={25}
+                                        color={favoriteStatus.sifest ? "#FF0000" : "#3470A2"}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
+                {/* INTEL */}
+                <TouchableOpacity
+                    onPress={() => {
+                        router.push("/Detail");
+                    }}
+                >
+                    <View style={styles.eventCard}>
+                        <View style={styles.eventImageContainer}>
+                            <Image
+                                source={require("../../assets/images/Intel.png")}
+                                style={styles.eventImage}
+                            />
+                        </View>
+                        <View style={styles.eventInfo}>
+                            <View style={styles.eventHeader}>
+                                <Text style={styles.eventDate}>12 November 2023</Text>
+                                <View style={styles.avatarContainer}>
+                                    <Image
+                                        source={require("../../assets/images/ava1.jpg")}
+                                        style={styles.avatar}
+                                    />
+                                    <Image
+                                        source={require("../../assets/images/ava2.png")}
+                                        style={styles.avatar}
+                                    />
+                                    <Image
+                                        source={require("../../assets/images/ava3.png")}
+                                        style={styles.avatar}
+                                    />
+                                </View>
+                            </View>
+                            <Text style={styles.eventTitle}>
+                                Open Recruitment INTEL 2024
+                            </Text>
+                            <Text style={styles.eventDescription}>
+                                Join us to explore new opportunities!
+                            </Text>
+                            <View style={styles.eventBottom}>
+                                <Text style={styles.eventOrganizer}>👨‍👦‍👦 BO INTEL FASILKOM UNSRI</Text>
+                                <TouchableOpacity
+                                    style={styles.iconButton}
+                                    onPress={() => toggleFavorite("intel")}
+                                >
+                                    <Icon
+                                        name={favoriteStatus.intel ? "favorite" : "favorite-border"}
+                                        size={25}
+                                        color={favoriteStatus.intel ? "#FF0000" : "#3470A2"}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
-        backgroundColor: '#f0f0f0',
+        flexGrow: 1,
+        backgroundColor: "#f9f9f9",
+        padding: 10,
     },
     header: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
         marginBottom: 20,
     },
-    backButton: {
+    headerTitle: {
+        marginLeft: 10,
         fontSize: 24,
-        color: '#1E90FF',
-        marginRight: 10,
+        fontWeight: "bold",
     },
-    headerText: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    eventList: {
+        // space: 20,
     },
-    card: {
-        backgroundColor: '#fff',
+    eventCard: {
+        backgroundColor: "#fff",
         borderRadius: 10,
-        shadowColor: '#000',
+        shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
-        shadowRadius: 8,
-        elevation: 4,
+        shadowRadius: 4,
+        elevation: 2,
         marginBottom: 20,
     },
-    eventImage: {
-        width: '100%',
-        height: 200,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+    eventImageContainer: {
+        padding: 10,
+        marginBottom: -10,
     },
-    eventContent: {
+    eventImage: {
+        width: "100%",
+        height: 200,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderTopLeftRadius: 30,
+        borderBottomRightRadius: 30,
+    },
+    eventInfo: {
         padding: 15,
     },
     eventHeader: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     eventDate: {
-        color: '#6b7280',
         fontSize: 14,
+        color: "#6b7280",
+        fontFamily: "Outfit-Regular",
     },
-    attendees: {
-        flexDirection: 'row',
+    avatarContainer: {
+        flexDirection: "row",
     },
-    attendeeAvatar: {
-        width: 24,
-        height: 24,
-        borderRadius: 12,
+    avatar: {
+        width: 25,
+        height: 25,
+        borderRadius: 40,
         marginLeft: -5,
+        borderColor: "#000",
+        borderWidth: 1,
     },
     eventTitle: {
         fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 5,
+        fontFamily: "Outfit-Semibold",
     },
     eventDescription: {
-        color: '#6b7280',
         fontSize: 14,
-        marginBottom: 10,
+        color: "#6b7280",
+        fontFamily: "Outfit-Regular",
     },
-    eventOrganizer: {
-        fontSize: 14,
-        color: '#6b7280',
-    },
-    icon: {
-        marginRight: 5,
-    },
-    actions: {
+    eventBottom: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 10,
+        alignItems: 'center',
+        marginTop: 5,
     },
-    actionIcon: {
-        fontSize: 20,
-        color: '#1E90FF',
+    eventOrganizer: {
+        fontSize: 16,
+        color: '#555',
+        fontFamily: 'Outfit-Regular',
+    },
+    eventActions: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    iconButton: {
+        marginLeft: 15, // Memberikan jarak antar ikon
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 

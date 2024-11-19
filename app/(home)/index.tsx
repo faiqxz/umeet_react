@@ -14,6 +14,7 @@ import Calendar from './Kalender';
 import { useAuth } from "@/provider/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import { useFonts } from 'expo-font';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default function HomeScreen() {
@@ -44,7 +45,7 @@ export default function HomeScreen() {
               style={styles.backgroundImage}
               imageStyle={{
                 borderBottomLeftRadius: 15,
-                borderBottomRightRadius: 15, // Sesuaikan jika card bawah rounded
+                borderBottomRightRadius: 15, 
               }}
             >
 
@@ -76,7 +77,7 @@ export default function HomeScreen() {
 
                   <View style={styles.headerWelcoming}>
                     <Text style={styles.subtitle}>Selamat Datang, </Text>
-                    <Text style={{ fontFamily: "Outfit-Medium", fontSize: 20, }}>USER!</Text>
+                    <Text style={{ fontFamily: "Outfit-Regular", fontSize: 20, }}>MOHAMMAD RIZKY!</Text>
 
                   </View>
                   <View style={styles.headerDesc}>
@@ -712,14 +713,14 @@ const styles = StyleSheet.create({
   },
   recommendationTitle: {
     fontSize: 16,
-    fontWeight: "bold",
     fontFamily: "Outfit-Regular",
-    padding: 5,
+    padding: 6,
   },
   recommendationSubTitle: {
     fontSize: 14,
+    fontFamily: "Outfit-Regular",
     color: "#6b7280",
-    padding: 5,
+    padding: 6,
   },
   calendar: {
     marginTop: 20,

@@ -1,191 +1,192 @@
-import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import sifestImage from "../../assets/images/sifest.png";
-import iffestImage from "../../assets/images/iffest.png"; // Example: Replace with correct image
+import React, { useState } from "react";
+import { View, Text, Image, ScrollView, TouchableOpacity, Modal } from "react-native";
+import { StyleSheet } from "react-native";
 
-const events = [
+const sifestImage = require("../../assets/images/sifest.png");
+
+type EventData = {
+  title: string;
+  image: any;
+  type: "Semua" | "Lomba" | "Seminar" | "Beasiswa";
+};
+
+const eventData: EventData[] = [
   {
-    date: "12 November 2023",
-    title: "SI Fest 2023",
-    description: "Artificial Intelligence, Is It A Good Thing Or Bad Things?",
-    organization: "HIMSI FASILKOM UNSRI",
-    image: sifestImage, // Local image
-    participants: 3,
-  },
-  {
-    date: "15 April 2024",
-    title: "IFFEST 2024",
-    description: "Ignite The Competition: Sparks Of Informatics",
-    organization: "HIMIF FASILKOM UNSRI",
-    image: iffestImage, // Remote image
-    participants: 4,
-  },
-  {
-    date: "12 November 2023",
-    title: "SI Fest 2023",
-    description: "Artificial Intelligence, Is It A Good Thing Or Bad Things?",
-    organization: "HIMSI FASILKOM UNSRI",
-    image: sifestImage, // Local image
-    participants: 3,
+    title: "SI FEST 2023",
+    image: sifestImage,
+    type: "Seminar",
   },
 ];
 
 const HomeScreen = () => {
+  const [activeFilter, setActiveFilter] = useState<
+    "Semua" | "Lomba" | "Seminar" | "Beasiswa"
+  >("Semua");
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleFilterChange = (
+    filter: "Semua" | "Lomba" | "Seminar" | "Beasiswa"
+  ) => {
+    setActiveFilter(filter);
+  };
+
+  const handleDownload = () => {
+    setModalVisible(true);
+    setTimeout(() => {
+      setModalVisible(false);
+    }, 2000); // Modal akan otomatis menutup setelah 2 detik
+  };
+
+  const filteredData = eventData.filter((event) =>
+    activeFilter === "Semua" ? true : event.type === activeFilter
+  );
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      
-      {events.map((event, index) => (
-        <View key={index} style={styles.eventCard}>
-          {/* Check if the image is a URL or local */}
-          <Image
-            source={
-              typeof event.image === "string"
-                ? { uri: event.image }
-                : event.image
+      <View style={styles.buttonContainer}>
+        {["Semua", "Lomba", "Seminar", "Beasiswa"].map((filter) => (
+          <TouchableOpacity
+            key={filter}
+            style={[
+              styles.button,
+              activeFilter === filter && styles.activeButton,
+            ]}
+            onPress={() =>
+              handleFilterChange(filter as "Semua" | "Lomba" | "Seminar" | "Beasiswa")
             }
-            style={styles.eventImage}
-          />
-          <View style={styles.eventContent}>
-            <View style={styles.eventHeader}>
-              <Text style={styles.eventDate}>{event.date}</Text>
-              <View style={styles.participantIcons}>
-                {[...Array(event.participants)].map((_, i) => (
-                  <Text key={i} style={styles.participantIcon}>
-                    👤
-                  </Text>
-                ))}
-              </View>
-            </View>
-            <Text style={styles.eventTitle}>{event.title}</Text>
-            <Text style={styles.eventDescription}>{event.description}</Text>
-            <Text style={styles.eventOrganization}>{event.organization}</Text>
+          >
+            <Text
+              style={[
+                styles.buttonText,
+                activeFilter === filter && styles.activeButtonText,
+              ]}
+            >
+              {filter}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
 
-            <View style={styles.actions}>
-              <TouchableOpacity style={styles.certificateButton}>
-                <Text style={styles.buttonText}>Unduh Sertifikat</Text>
-              </TouchableOpacity>
-              <View style={styles.iconActions}>
-                <TouchableOpacity style={styles.actionIcon}>
-                  <Text style={styles.icon}>🔖</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionIcon}>
-                  <Text style={styles.icon}>🔗</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+      <View style={styles.eventList}>
+        {filteredData.map((event, index) => (
+          <View key={index} style={styles.eventCard}>
+            <Text style={styles.eventTitle}>{event.title}</Text>
+            <Image source={event.image} style={styles.eventImage} />
+            <TouchableOpacity style={styles.detailButton} onPress={handleDownload}>
+              <Text style={styles.detailButtonText}>Unduh Sertifikat</Text>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
+
+      {/* Modal untuk pemberitahuan */}
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Sertifikat berhasil diunduh!</Text>
           </View>
         </View>
-      ))}
+      </Modal>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: 16,
     backgroundColor: "#f9f9f9",
+    flexGrow: 1,
   },
-  header: {
+  buttonContainer: {
     flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
+    justifyContent: "space-between",
+    marginBottom: 16,
   },
-  backButton: {
-    padding: 5,
+  button: {
+    backgroundColor: "#3470A2",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    marginHorizontal: 4,
   },
-  backButtonText: {
-    fontSize: 24,
-    color: "#1E90FF",
+  buttonText: {
+    color: "#fff",
+    fontFamily: "Outfit-Regular",
   },
-  headerText: {
-    flex: 1,
-    textAlign: "center",
-    fontSize: 20,
-    fontWeight: "bold",
+  activeButton: {
+    backgroundColor: "#0B3954",
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    elevation: 5,
+  },
+  activeButtonText: {
+    fontFamily: "Outfit-Semibold",
+  },
+  eventList: {
+    flexGrow: 1,
   },
   eventCard: {
     backgroundColor: "#fff",
     borderRadius: 10,
-    marginBottom: 20,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3,
+    elevation: 2,
+    padding: 16,
+    marginBottom: 16,
+  },
+  eventTitle: {
+    fontSize: 18,
+    fontFamily: "Outfit-Semibold",
   },
   eventImage: {
     width: "100%",
     height: 200,
-    borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderTopLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    marginBottom: 8,
   },
-  eventContent: {
-    padding: 15,
-  },
-  eventHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 10,
-  },
-  eventDate: {
-    fontSize: 14,
-    color: "#6b7280",
-  },
-  participantIcons: {
-    flexDirection: "row",
-  },
-  participantIcon: {
-    fontSize: 16,
-    marginLeft: 5,
-    color: "#ff4500",
-  },
-  eventTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  eventDescription: {
-    fontSize: 14,
-    color: "#6b7280",
-    marginBottom: 5,
-  },
-  eventOrganization: {
-    fontSize: 14,
-    color: "#6b7280",
-    marginBottom: 10,
-  },
-  actions: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  detailButton: {
+    backgroundColor: "#3470A2",
+    paddingVertical: 8,
+    borderRadius: 20,
     alignItems: "center",
   },
-  certificateButton: {
-    backgroundColor: "#1E90FF",
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
+  detailButtonText: {
     color: "#fff",
-    fontWeight: "bold",
+    fontFamily: "Outfit-Semibold",
   },
-  iconActions: {
-    flexDirection: "row",
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  actionIcon: {
-    marginLeft: 10,
+  modalContent: {
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
-  icon: {
-    fontSize: 24,
-    color: "#1E90FF",
+  modalText: {
+    fontSize: 16,
+    fontFamily: "Outfit-Semibold",
+    color: "#333",
   },
 });
 

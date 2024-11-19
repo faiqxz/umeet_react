@@ -127,14 +127,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 16,        
+    fontFamily: "Outfit-Semibold",
     textAlign: 'center',
     color: '#333',
   },
   label: {
     fontSize: 16,
     color: '#333',
+    fontFamily: "Outfit-Medium",
     marginBottom: 4,
     marginTop: 12,
   },
@@ -159,6 +160,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontWeight: 'bold',
+    fontFamily: "Outfit-Medium",
   },
 });

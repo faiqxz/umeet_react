@@ -1,0 +1,47 @@
+@font-face {
+    src: url(path/to/fonts/Ionicons.ttf);
+    font-family: "Ionicons";
+  }
+  
+  @font-face {
+    src: url(path/to/fonts/FontAwesome.ttf);
+    font-family: "FontAwesome";
+  }
+  
+  @font-face {
+    src: url(path/to/fonts/FontAwesome5_Brands.ttf);
+    font-family: "FontAwesome5_Brands";
+    font-weight: 400; /* Regular weight */
+    font-style: normal;
+  }
+  
+  @font-face {
+    src: url(path/to/fonts/FontAwesome5_Regular.ttf);
+    font-family: "FontAwesome5_Regular";
+    font-weight: 400; /* Regular weight */
+    font-style: normal;
+  }
+  
+  @font-face {
+    src: url(path/to/fonts/FontAwesome5_Solid.ttf);
+    font-family: "FontAwesome5_Solid";
+    font-weight: 900; /* Bold weight for solid */
+    font-style: normal;
+  }
+  
+  @font-face {
+    src: url(path/to/fonts/MaterialIcons.ttf);
+    font-family: "MaterialIcons";
+  }
+  
+  @font-face {
+    src: url(path/to/fonts/Feather.ttf);
+    font-family: "Feather";
+  }
+  
+  @font-face {
+    src: url(path/to/fonts/MaterialCommunityIcons.ttf);
+    font-family: "MaterialCommunityIcons";
+  }
+  
+  /* TODO: Add other icons fonts here */

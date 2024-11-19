@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   eventTitle: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "Outfit-Semibold",
   },
   status: {
     color: "#3470A2",
@@ -191,8 +191,11 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: "100%",
-    height: 150,
-    borderRadius: 10,
+    height: 200,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderTopLeftRadius: 30,
+    borderBottomRightRadius: 30,
     marginBottom: 8,
   },
   ratingContainer: {
