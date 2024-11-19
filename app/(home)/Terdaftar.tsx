@@ -145,7 +145,7 @@ const HomeScreen = () => {
                 Join us to explore new opportunities!
               </Text>
               <View style={styles.eventBottom}>
-                <Text style={styles.eventOrganizer}>👨‍👦‍👦 BO INTEL FASILKOM USNRI</Text>
+                <Text style={styles.eventOrganizer}>👨‍👦‍👦 BO INTEL FASILKOM UNSRI</Text>
                 <View style={styles.eventActions}>
                   <TouchableOpacity style={styles.iconButton}>
                     <Icon name="link" size={20} color="#3470A2" />

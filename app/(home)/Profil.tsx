@@ -83,10 +83,11 @@ const styles = StyleSheet.create({
     nameText: {
         marginTop: 20,
         fontSize: 25,
-        fontWeight: 'bold',
+        fontFamily: "Outfit-Regular",
     },
     universityText: {
         color: 'gray',
+        fontFamily: "Outfit-Regular",
         marginBottom: 5,
         fontSize: 15,
     },
@@ -99,8 +100,8 @@ const styles = StyleSheet.create({
     },
     editButtonText: {
         color: 'white',
+        fontFamily: "Outfit-Regular",
         fontSize: 16,
-        fontWeight: 'bold',
     },
     profileSection: {
         marginTop: 20,
@@ -109,6 +110,7 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 18,
+        fontFamily: "Outfit-Regular",
         fontWeight: '600',
         marginBottom: 10,
     },
@@ -119,6 +121,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         borderColor: 'gray',
+        fontFamily: "Outfit-Regular",
         backgroundColor: '#f9f9f9',
     },
     logoutButton: {
@@ -131,7 +134,7 @@ const styles = StyleSheet.create({
     logoutButtonText: {
         color: 'white',
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily: "Outfit-Regular",
     },
 });
 

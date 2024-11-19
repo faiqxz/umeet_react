@@ -9,19 +9,29 @@ import {
     SafeAreaView,
     TextInput,
 } from "react-native";
+import { useFonts } from 'expo-font';
 import { StyleSheet } from "react-native";
 
 export default function HomeScreen() {
+    const [fontsLoaded] = useFonts({
+        'Outfit-Regular': require('../../assets/fonts/Outfit-Regular.ttf'),
+        'Outfit-Medium': require('../../assets/fonts/Outfit-Medium.ttf'),
+        'Outfit-Semibold': require('../../assets/fonts/Outfit-SemiBold.ttf'),
+        'Outfit-Bold': require('../../assets/fonts/Outfit-Bold.ttf'),
+        'Outfit-Black': require('../../assets/fonts/Outfit-Black.ttf'),
+
+    });
+
     const YourComponent: React.FC = () => {
-        // Inisialisasi state searchQuery dengan string kosong
         const [searchQuery, setSearchQuery] = useState<string>('');
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
                 <ScrollView>
                     <View style={styles.card}>
                         <TextInput
-                            style={styles.searchBar}
+                            style={[styles.searchBar, searchQuery === "" && styles.placeholderFont]}
                             placeholder="Cari event..."
+                            placeholderTextColor="#B0B0B0"
                             onChangeText={(text: string) => setSearchQuery(text)}
                             value={searchQuery}
                         />
@@ -97,10 +107,10 @@ export default function HomeScreen() {
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
-                                            Open Recruitment Staff
+                                            Open Recruitment Staff BEM UNSRI 2024
                                         </Text>
                                         <Text style={styles.recommendationSubTitle}>
-                                            Open Recruitment Staff BEM
+                                            Open Recruitment Staff BEM UNSRI 2024
                                         </Text>
                                     </View>
                                 </View>
@@ -161,10 +171,10 @@ export default function HomeScreen() {
                                             style={styles.recommendationImage}
                                         />
                                         <Text style={styles.recommendationTitle}>
-                                            Open Recruitment Staff
+                                            Open Recruitment Staff BEM UNSRI 2024
                                         </Text>
                                         <Text style={styles.recommendationSubTitle}>
-                                            Open Recruitment Staff BEM
+                                            Open Recruitment Staff BEM UNSRI 2024
                                         </Text>
                                     </View>
                                 </View>
@@ -179,19 +189,21 @@ export default function HomeScreen() {
 
     const styles = StyleSheet.create({
         searchBar: {
-            height: 50, // Tinggi sedikit lebih besar untuk tampilan lebih modern
-            borderColor: '#3470A2', // Ganti dengan warna biru yang lebih cerah
+            height: 50,
+            borderColor: '#3470A2',
             borderWidth: 1,
-            borderRadius: 15, // Sudut yang lebih halus
-            paddingHorizontal: 15, // Padding yang lebih baik
-            marginVertical: 1,
+            borderRadius: 20,
+            paddingHorizontal: 15,
+            marginTop: 10,
             marginHorizontal: 20,
-            backgroundColor: '#F8F8F8', // Warna latar belakang yang lebih cerah
-            elevation: 2, // Efek bayangan untuk tampilan lebih menarik
-            shadowColor: '#000', // Bayangan yang lebih baik di iOS
+            backgroundColor: '#F8F8F8',
+            elevation: 5,
+            shadowColor: '#000',
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.1,
-            shadowRadius: 4,
+        },
+        placeholderFont: {
+            fontFamily: "Outfit-Regular",
         },
         container: {
             flexGrow: 1,
@@ -250,7 +262,7 @@ export default function HomeScreen() {
         },
         sectionTitle: {
             fontSize: 20,
-            fontWeight: "bold",
+            fontFamily: "Outfit-Semibold",
             marginBottom: 10,
         },
         button: {
@@ -336,7 +348,8 @@ export default function HomeScreen() {
             color: "#1E90FF",
         },
         iconText: {
-            fontSize: 12,
+            fontSize: 12,            
+            fontFamily: "Outfit-Regular",
         },
         organizers: {
             marginTop: 20,
@@ -376,13 +389,14 @@ export default function HomeScreen() {
         },
         recommendationTitle: {
             fontSize: 16,
-            fontWeight: "bold",
-            padding: 5,
+            fontFamily: "Outfit-Regular",
+            padding: 6,
         },
         recommendationSubTitle: {
             fontSize: 14,
             color: "#6b7280",
-            padding: 5,
+            fontFamily: "Outfit-Regular",
+            padding: 6,
         },
         calendar: {
             marginTop: 20,

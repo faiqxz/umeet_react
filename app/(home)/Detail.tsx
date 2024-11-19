@@ -5,13 +5,12 @@ import { StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const DetailScreen = () => {
-    // State untuk mengatur tab mana yang aktif
     const [activeTab, setActiveTab] = useState("detail");
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Image
-                source={require("../../assets/images/sipesdetail.png")} // Gambar header utama
+                source={require("../../assets/images/sipesdetail.png")}
                 style={styles.eventImage}
             />
 
@@ -33,7 +32,7 @@ const DetailScreen = () => {
                 </View>
 
                 {/* Event Location */}
-                <View style={styles.infoRow}>
+                <View style={styles.infoRowTempat}>
                     <Text style={styles.label}>Tempat</Text>
                     <Text style={styles.value}>Grand Ballroom Ayola Hotel Palembang</Text>
                 </View>
@@ -107,7 +106,7 @@ const DetailScreen = () => {
                                     <Icon name="calendar" size={14} color="#000" /> 12 November 2023, 10.00 - 15.00{" "}
                                 </Text>
                                 <Text style={styles.ticketInfoText}>
-                                    <Icon name="map-marker" size={14} color="#000" /> Offline (Tatap Muka)
+                                    {" "}<Icon name="map-marker" size={14} color="#000" />{" "} Offline (Tatap Muka)
                                 </Text>
                             </View>
                             <View style={styles.ticketFooter}>
@@ -159,17 +158,21 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 10,
         borderRadius: 5,
-        fontWeight: "bold",
+        fontFamily: "Outfit-Semibold",
         fontSize: 14,
         alignSelf: "flex-start",
     },
     title: {
         fontSize: 24,
-        fontWeight: "bold",
+        fontFamily: "Outfit-Bold",
         marginVertical: 10,
     },
     infoRow: {
         flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: 10,
+    },
+    infoRowTempat: {
         justifyContent: "space-between",
         marginBottom: 10,
     },
@@ -178,11 +181,12 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 14,
+        fontFamily: "Outfit-Medium",
         color: "#6B7280",
     },
     value: {
         fontSize: 16,
-        fontWeight: "bold",
+        fontFamily: "Outfit-Regular",
     },
     organizer: {
         flexDirection: "row",
@@ -192,17 +196,18 @@ const styles = StyleSheet.create({
     },
     orgName: {
         fontSize: 16,
-        fontWeight: "bold",
+        fontFamily: "Outfit-Semibold",
     },
     followButton: {
         backgroundColor: "#1E40AF",
-        paddingVertical: 5,
+        paddingVertical: 7,
         paddingHorizontal: 10,
-        borderRadius: 5,
+        borderRadius: 12,
     },
     followText: {
         color: "#fff",
-        fontWeight: "bold",
+        fontSize: 15,
+        fontFamily: "Outfit-Semibold",
     },
     tabContainer: {
         flexDirection: "row",
@@ -220,23 +225,25 @@ const styles = StyleSheet.create({
     },
     tabButtonText: {
         fontSize: 16,
+        fontFamily: "Outfit-Semibold",
         color: "#6B7280",
     },
     tabButtonTextActive: {
         fontSize: 16,
         color: "#1E40AF",
-        fontWeight: "bold",
+        fontFamily: "Outfit-Semibold",
     },
     descriptionContainer: {
         padding: 15,
     },
     sectionTitle: {
         fontSize: 18,
-        fontWeight: "bold",
+        fontFamily: "Outfit-Medium",
         marginBottom: 10,
     },
     descriptionText: {
         fontSize: 14,
+        fontFamily: "Outfit-Regular",
         color: "#4B5563",
     },
     benefitsContainer: {
@@ -247,12 +254,12 @@ const styles = StyleSheet.create({
     },
     benefitItem: {
         fontSize: 14,
+        fontFamily: "Outfit-Regular",
         marginBottom: 5,
     },
     ticketContainer: {
         padding: 15,
     },
-
     ticketCard: {
         backgroundColor: "#fff",
         padding: 20,
@@ -272,13 +279,14 @@ const styles = StyleSheet.create({
     ticketLabelText: {
         color: "#1E40AF",
         fontSize: 14,
-        fontWeight: "bold",
+        fontFamily: "Outfit-Semibold",
     },
     ticketInfo: {
         marginTop: 10,
     },
     ticketInfoText: {
         fontSize: 14,
+        fontFamily: "Outfit-Medium",
         color: "#4B5563",
         marginBottom: 5,
     },
@@ -286,33 +294,33 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop: 15,
     },
     ticketPrice: {
         fontSize: 16,
-        fontWeight: "bold",
+        fontFamily: "Outfit-Semibold",
         color: "#1E40AF",
     },
     selectButton: {
         backgroundColor: "#1E40AF",
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderRadius: 5,
+        borderRadius: 15,
     },
     selectButtonText: {
         color: "#fff",
-        fontWeight: "bold",
+        fontFamily: "Outfit-Semibold",
     },
     checkoutButton: {
         backgroundColor: "#1E40AF",
         paddingVertical: 15,
         marginHorizontal: 15,
-        borderRadius: 5,
+        borderRadius: 25,
         alignItems: "center",
+        marginBottom: 10,
     },
     checkoutButtonText: {
         color: "#fff",
-        fontWeight: "bold",
+        fontFamily: "Outfit-Bold",
         fontSize: 16,
     },
 });
