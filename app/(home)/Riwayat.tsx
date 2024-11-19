@@ -1,39 +1,87 @@
-import React from "react";
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, Image, ScrollView, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 
-// Importing images
-import sifestImage from "../../assets/images/sifest.png";
-import uxResearchImage from "../../assets/images/UX.png"; // Example: Replace with correct image
-import pertaminaImage from "../../assets/images/pertamina.png";
+const sifestImage = require('../../assets/images/sifest.png');
+const uxResearchImage = require('../../assets/images/UX.png');
+const pertaminaImage = require('../../assets/images/pertamina.png');
+
+type EventData = {
+  title: string;
+  image: any;
+  type: "Semua" | "Lomba" | "Seminar" | "Beasiswa"; // Update tipe untuk type
+};
+
+const eventData: EventData[] = [
+  {
+    title: "SI FEST 2023",
+    image: sifestImage,
+    type: "Seminar", 
+  },
+  {
+    title: "Mastering Your UX Research",
+    image: uxResearchImage,
+    type: "Lomba", 
+  },
+  {
+    title: "Pertamina Goes to Campus",
+    image: pertaminaImage,
+    type: "Seminar", 
+  },
+];
 
 const HomeScreen = () => {
+  const [activeFilter, setActiveFilter] = useState<"Semua" | "Lomba" | "Seminar" | "Beasiswa">("Semua"); // Default filter
+
+  const handleFilterChange = (filter: "Semua" | "Lomba" | "Seminar" | "Beasiswa") => {
+    setActiveFilter(filter);
+  };
+
+  const filteredData = eventData.filter((event) =>
+    activeFilter === "Semua" ? true : event.type === activeFilter
+  );
+
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null); 
+  const [commentText, setCommentText] = useState(""); 
+
+  const handleExpand = (index: number) => {
+    setExpandedIndex(index === expandedIndex ? null : index); 
+  };
+
+  const handleSend = () => {
+    console.log("Komentar terkirim:", commentText);
+    setCommentText(""); 
+    setExpandedIndex(null); 
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* <View style={styles.header}>
-                <TouchableOpacity>
-                    <FontAwesomeIcon icon={faArrowLeft} size={32} color="#1E90FF" />
-                </TouchableOpacity>
-                <Text style={styles.title}>Riwayat</Text>
-            </View> */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Beasiswa</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Lomba</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Seminar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Kegiatan</Text>
-        </TouchableOpacity>
+        {["Semua", "Lomba", "Seminar", "Beasiswa"].map((filter) => (
+          <TouchableOpacity
+            key={filter}
+            style={[
+              styles.button,
+              activeFilter === filter && styles.activeButton, // Gaya untuk tombol aktif
+            ]}
+            onPress={() => handleFilterChange(filter as "Semua" | "Lomba" | "Seminar" | "Beasiswa")}
+          >
+            <Text
+              style={[
+                styles.buttonText,
+                activeFilter === filter && styles.activeButtonText,
+              ]}
+            >
+              {filter}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
+
       <View style={styles.eventList}>
-        {eventData.map((event, index) => (
+        {filteredData.map((event, index) => (
           <View key={index} style={styles.eventCard}>
             <View style={styles.eventHeader}>
               <Text style={styles.eventTitle}>{event.title}</Text>
@@ -50,8 +98,26 @@ const HomeScreen = () => {
                   />
                 ))}
               </View>
-              <Text style={styles.commentText}>Beri komentar</Text>
+
+              <TouchableOpacity onPress={() => handleExpand(index)}>
+                <Text style={styles.commentText}>Beri komentar</Text>
+              </TouchableOpacity>
             </View>
+
+            {/* Expandable Comment Box */}
+            {expandedIndex === index && (
+              <View style={styles.commentBox}>
+                <TextInput
+                  style={styles.textInput}
+                  value={commentText}
+                  onChangeText={setCommentText}
+                  placeholder="Tulis komentar Anda..."
+                />
+                <TouchableOpacity style={styles.sendButton} onPress={handleSend}>
+                  <Text style={styles.sendButtonText}>Kirim</Text>
+                </TouchableOpacity>
+              </View>
+            )}
             <TouchableOpacity style={styles.detailButton}>
               <Text style={styles.detailButtonText}>Rincian Kegiatan</Text>
             </TouchableOpacity>
@@ -62,36 +128,11 @@ const HomeScreen = () => {
   );
 };
 
-const eventData = [
-  {
-    title: "SI FEST 2023",
-    image: sifestImage,
-  },
-  {
-    title: "Mastering Your UX Research",
-    image: uxResearchImage,
-  },
-  {
-    title: "Pertamina Goes to Campus",
-    image: pertaminaImage,
-  },
-];
-
 const styles = StyleSheet.create({
   container: {
     padding: 16,
     backgroundColor: "#f9f9f9",
     flexGrow: 1,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginLeft: 16,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -99,17 +140,28 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   button: {
-    backgroundColor: "#1E90FF",
+    backgroundColor: "#3470A2",
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 20,
+    marginHorizontal: 4,
   },
   buttonText: {
     color: "#fff",
-    fontWeight: "bold",
+    fontFamily: "Outfit-Regular",
+  },
+  activeButton: {
+    backgroundColor: "#0B3954", 
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    elevation: 5,
+  },
+  activeButtonText: {
+    fontFamily: "Outfit-Semibold",
   },
   eventList: {
-    space: "4",
+    flexGrow: 1,
   },
   eventCard: {
     backgroundColor: "#fff",
@@ -133,8 +185,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   status: {
-    color: "#FFD700",
+    color: "#3470A2",
     fontWeight: "bold",
+    textDecorationLine: "underline",
   },
   eventImage: {
     width: "100%",
@@ -153,16 +206,47 @@ const styles = StyleSheet.create({
   },
   commentText: {
     color: "#6b7280",
+    fontFamily: "Outfit-Regular",
+    textDecorationLine: "underline",
+  },
+  commentBox: {
+    marginTop: 8,
+    backgroundColor: "#f1f5f9",
+    borderRadius: 10,
+    padding: 8,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  textInput: {
+    flex: 1,
+    height: 40,
+    borderColor: "#d1d5db",
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    backgroundColor: "#fff",
+    marginRight: 8,
+    fontFamily: "Outfit-Regular",
+  },
+  sendButton: {
+    backgroundColor: "#3470A2",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+  },
+  sendButtonText: {
+    color: "#fff",
+    fontFamily: "Outfit-Semibold",
   },
   detailButton: {
-    backgroundColor: "#1E90FF",
+    backgroundColor: "#3470A2",
     paddingVertical: 8,
     borderRadius: 20,
     alignItems: "center",
   },
   detailButtonText: {
     color: "#fff",
-    fontWeight: "bold",
+    fontFamily: "Outfit-Semibold",
   },
 });
 
