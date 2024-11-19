@@ -7,143 +7,157 @@ import Icon from "react-native-vector-icons/FontAwesome";
 const HomeScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-
       <View style={styles.eventList}>
 
+        {/* Mulai Sifest */}
         <TouchableOpacity
           onPress={() => {
             router.push("/Detail");
           }}
+        // activeOpacity={1}
         >
-          {/* Event 1 */}
           <View style={styles.eventCard}>
-            <Image
-              source={require("../../assets/images/sifest.png")}
-              style={styles.eventImage}
-            />
+            <View style={styles.eventImageContainer}>
+              <Image
+                source={require("../../assets/images/sifest.png")}
+                style={styles.eventImage}
+              />
+            </View>
             <View style={styles.eventInfo}>
               <View style={styles.eventHeader}>
                 <Text style={styles.eventDate}>12 November 2023</Text>
                 <View style={styles.avatarContainer}>
                   <Image
-                    source={{ uri: "https://placehold.co/24x24" }}
+                    source={require("../../assets/images/ava1.jpg")}
                     style={styles.avatar}
                   />
                   <Image
-                    source={{ uri: "https://placehold.co/24x24" }}
+                    source={require("../../assets/images/ava2.png")}
                     style={styles.avatar}
                   />
                   <Image
-                    source={{ uri: "https://placehold.co/24x24" }}
+                    source={require("../../assets/images/ava3.png")}
                     style={styles.avatar}
                   />
                 </View>
               </View>
-              <Text style={styles.eventTitle}>SI Fest 2023</Text>
+              <Text style={styles.eventTitle}>SI FEST 2023</Text>
               <Text style={styles.eventDescription}>
                 Artificial Intelligence, Is It A Good Thing Or Bad Thing?
               </Text>
-              <Text style={styles.eventOrganizer}>HIMSI FASILKOM UNSRI</Text>
-
-            <View style={styles.eventActions}>
-              <TouchableOpacity>
-                <Icon name="comment" size={20} color="#1E90FF" />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Icon name="share" size={20} color="#1E90FF" />
-              </TouchableOpacity>
+              <View style={styles.eventBottom}>
+                <Text style={styles.eventOrganizer}>👨‍👦‍👦 HIMSI FASILKOM UNSRI</Text>
+                <View style={styles.eventActions}>
+                  <TouchableOpacity style={styles.iconButton}>
+                    <Icon name="link" size={20} color="#3470A2" />
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
+
           </View>
+        </TouchableOpacity>
+        {/* Selesai Sifest */}
 
-      </View>
-      </TouchableOpacity>
-
-
-      {/* Event 2 */}
-      <View style={styles.eventCard}>
-        <Image
-          source={require("../../assets/images/iffest.png")}
-          style={styles.eventImage}
-        />
-        <View style={styles.eventInfo}>
-          <View style={styles.eventHeader}>
-            <Text style={styles.eventDate}>15 April 2024</Text>
-            <View style={styles.avatarContainer}>
+        {/* Mulai Iffest */}
+        <TouchableOpacity
+          onPress={() => {
+            router.push("/Detail");
+          }}
+        >
+          <View style={styles.eventCard}>
+            <View style={styles.eventImageContainer}>
               <Image
-                source={{ uri: "https://placehold.co/24x24" }}
-                style={styles.avatar}
-              />
-              <Image
-                source={{ uri: "https://placehold.co/24x24" }}
-                style={styles.avatar}
-              />
-              <Image
-                source={{ uri: "https://placehold.co/24x24" }}
-                style={styles.avatar}
-              />
-              <Image
-                source={{ uri: "https://placehold.co/24x24" }}
-                style={styles.avatar}
+                source={require("../../assets/images/iffest.png")}
+                style={styles.eventImage}
               />
             </View>
-          </View>
-          <Text style={styles.eventTitle}>IFFEST 2024</Text>
-          <Text style={styles.eventDescription}>
-            Ignite The Competition, Sparks Of Informatics
-          </Text>
-          <Text style={styles.eventOrganizer}>HMIF FASILKOM UNSRI</Text>
-          <View style={styles.eventActions}>
-            <TouchableOpacity>
-              <Icon name="comment" size={20} color="#1E90FF" />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="share" size={20} color="#1E90FF" />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-      {/* Event 3 */}
-      <View style={styles.eventCard}>
-        <Image
-          source={require("../../assets/images/Intel.png")}
-          style={styles.eventImage}
-        />
-        <View style={styles.eventInfo}>
-          <View style={styles.eventHeader}>
-            <Text style={styles.eventDate}>12 November 2023</Text>
-            <View style={styles.avatarContainer}>
-              <Image
-                source={{ uri: "https://placehold.co/24x24" }}
-                style={styles.avatar}
-              />
-              <Image
-                source={{ uri: "https://placehold.co/24x24" }}
-                style={styles.avatar}
-              />
-              <Image
-                source={{ uri: "https://placehold.co/24x24" }}
-                style={styles.avatar}
-              />
+            <View style={styles.eventInfo}>
+              <View style={styles.eventHeader}>
+                <Text style={styles.eventDate}>15 April 2024</Text>
+                <View style={styles.avatarContainer}>
+                  <Image
+                    source={require("../../assets/images/ava1.jpg")}
+                    style={styles.avatar}
+                  />
+                  <Image
+                    source={require("../../assets/images/ava2.png")}
+                    style={styles.avatar}
+                  />
+                  <Image
+                    source={require("../../assets/images/ava3.png")}
+                    style={styles.avatar}
+                  />
+                </View>
+              </View>
+              <Text style={styles.eventTitle}>IFFEST 2024</Text>
+              <Text style={styles.eventDescription}>
+                Ignite The Competition, Sparks Of Informatics!
+              </Text>
+              <View style={styles.eventBottom}>
+                <Text style={styles.eventOrganizer}>👨‍👦‍👦 HMIF FASILKOM UNSRI</Text>
+                <View style={styles.eventActions}>
+                  <TouchableOpacity style={styles.iconButton}>
+                    <Icon name="link" size={20} color="#3470A2" />
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
           </View>
-          <Text style={styles.eventTitle}>
-            Recruitment for BO INTEL FASILKOM UNSRI 2024
-          </Text>
-          <Text style={styles.eventDescription}>
-            Join us to explore new opportunities!
-          </Text>
-          <Text style={styles.eventOrganizer}>HIMSI FASILKOM UNSRI</Text>
-          <View style={styles.eventActions}>
-            <TouchableOpacity>
-              <Icon name="comment" size={20} color="#1E90FF" />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="share" size={20} color="#1E90FF" />
-            </TouchableOpacity>
+        </TouchableOpacity>
+        {/* Selesai Iffest */}
+
+        {/* Mulai Intel */}
+        <TouchableOpacity
+          onPress={() => {
+            router.push("/Detail");
+          }}
+        >
+          <View style={styles.eventCard}>
+            <View style={styles.eventImageContainer}>
+              <Image
+                source={require("../../assets/images/Intel.png")}
+                style={styles.eventImage}
+              />
+            </View>
+            <View style={styles.eventInfo}>
+              <View style={styles.eventHeader}>
+                <Text style={styles.eventDate}>12 November 2023</Text>
+                <View style={styles.avatarContainer}>
+                  <Image
+                    source={require("../../assets/images/ava1.jpg")}
+                    style={styles.avatar}
+                  />
+                  <Image
+                    source={require("../../assets/images/ava2.png")}
+                    style={styles.avatar}
+                  />
+                  <Image
+                    source={require("../../assets/images/ava3.png")}
+                    style={styles.avatar}
+                  />
+                </View>
+              </View>
+              <Text style={styles.eventTitle}>
+                Open Recruitment INTEL 2024
+              </Text>
+              <Text style={styles.eventDescription}>
+                Join us to explore new opportunities!
+              </Text>
+              <View style={styles.eventBottom}>
+                <Text style={styles.eventOrganizer}>👨‍👦‍👦 BO INTEL FASILKOM USNRI</Text>
+                <View style={styles.eventActions}>
+                  <TouchableOpacity style={styles.iconButton}>
+                    <Icon name="link" size={20} color="#3470A2" />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
+        {/* Selesai Intel */}
+
       </View>
-    </View>
     </ScrollView >
   );
 };
@@ -165,7 +179,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   eventList: {
-    space: 20,
+    // space: 20,
   },
   eventCard: {
     backgroundColor: "#fff",
@@ -177,11 +191,17 @@ const styles = StyleSheet.create({
     elevation: 2,
     marginBottom: 20,
   },
+  eventImageContainer: {
+    padding: 10,
+    marginBottom: -10,
+  },
   eventImage: {
     width: "100%",
     height: 200,
-    borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderTopLeftRadius: 30,
+    borderBottomRightRadius: 30,
   },
   eventInfo: {
     padding: 15,
@@ -190,39 +210,51 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 10,
   },
   eventDate: {
     fontSize: 14,
     color: "#6b7280",
+    fontFamily: "Outfit-Regular",
   },
   avatarContainer: {
     flexDirection: "row",
   },
   avatar: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    marginLeft: 2,
+    width: 25,
+    height: 25,
+    borderRadius: 40,
+    marginLeft: -5,
+    borderColor: "#000",
+    borderWidth: 1,
   },
   eventTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 5,
+    fontFamily: "Outfit-Semibold",
   },
   eventDescription: {
     fontSize: 14,
     color: "#6b7280",
-    marginBottom: 5,
+    fontFamily: "Outfit-Regular",
+  },
+  eventBottom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 5,
   },
   eventOrganizer: {
-    fontSize: 12,
-    color: "#6b7280",
-    marginBottom: 5,
+    fontSize: 16,
+    color: '#555',
+    fontFamily: 'Outfit-Regular',
   },
   eventActions: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconButton: {
+    marginLeft: 15, // Memberikan jarak antar ikon
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
