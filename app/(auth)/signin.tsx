@@ -1,13 +1,14 @@
 import { Stack } from 'expo-router';
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { supabase } from '../../lib/supabase';
 
-export default function SignInScreen() {
+export default function SignInScreen({ navigation }: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [fullName, setFullName] = useState('');
+  const router = useRouter();
 
   async function signInWithEmail() {
     setLoading(true);
@@ -17,34 +18,11 @@ export default function SignInScreen() {
     });
 
     if (error) {
-      Alert.alert(error.message);
+      Alert.alert('Error', error.message);
     } else {
-      // Handle successful login, navigate or display success message
+      Alert.alert('Success', 'Login berhasil!');
+      // Navigasi ke halaman utama setelah login
     }
-    setLoading(false);
-  }
-
-  async function signUpWithEmail() {
-    setLoading(true);
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: {
-          full_name: fullName,
-        },
-      },
-    });
-
-    if (error) {
-      Alert.alert(error.message);
-    } else {
-      // Handle successful sign up, navigate or display success message
-    }
-
     setLoading(false);
   }
 
@@ -56,16 +34,6 @@ export default function SignInScreen() {
           Selamat Datang di <Text style={styles.logoU}>U-</Text>
           <Text style={styles.logoMeet}>Meet</Text>
         </Text>
-
-        <Text style={styles.label}>Nama Lengkap</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukkan nama lengkap"
-          value={fullName}
-          onChangeText={(text) => setFullName(text)}
-          autoCapitalize="words"
-          keyboardType="default"
-        />
 
         <Text style={styles.label}>Email</Text>
         <TextInput
@@ -101,17 +69,15 @@ export default function SignInScreen() {
           )}
         </TouchableOpacity>
 
-        {/* Tombol Sign Up */}
+        {/* Tombol untuk pindah ke Sign Up */}
         <TouchableOpacity
-          disabled={loading}
-          style={[styles.button, { backgroundColor: '#DDA915' }]}
-          onPress={signUpWithEmail}
+          style={styles.linkButton}
+          onPress={() => router.push('/signup')}
         >
-          {loading ? (
-            <ActivityIndicator size="small" color="#fff" />
-          ) : (
-            <Text style={styles.buttonText}>DAFTAR</Text>
-          )}
+          <Text style={styles.linkButtonText}>
+            Belum punya akun? {""} 
+            <Text style={styles.linkButtonTextDaftar}>Daftar</Text>
+          </Text>
         </TouchableOpacity>
       </View>
     </>
@@ -127,24 +93,26 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    marginBottom: 16,        
-    fontFamily: "Outfit-Semibold",
+    marginBottom: 16,
+    fontFamily: 'Outfit-Semibold',
     textAlign: 'center',
     color: '#333',
   },
   label: {
     fontSize: 16,
     color: '#333',
-    fontFamily: "Outfit-Medium",
+    fontFamily: 'Outfit-Medium',
     marginBottom: 4,
+    marginHorizontal: 20,
     marginTop: 12,
   },
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
+    borderRadius: 15,
     padding: 12,
     marginBottom: 16,
+    marginHorizontal: 20,
   },
   logoU: {
     color: '#DDA915',
@@ -153,13 +121,31 @@ const styles = StyleSheet.create({
     color: '#3470A2',
   },
   button: {
-    padding: 16,
-    marginBottom: 6,
-    borderRadius: 10,
+    padding: 10,
+    borderRadius: 20,
+    marginHorizontal: 130,
     alignItems: 'center',
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
   },
   buttonText: {
     color: 'white',
+    fontFamily: 'Outfit-Semibold',
+    fontSize: 15,
+  },
+  linkButton: {
+    marginTop: 16,
+    alignItems: 'center',
+  },
+  linkButtonText: {
+    color: '#3470A2',
+    fontFamily: 'Outfit-Regular',
+  },
+  linkButtonTextDaftar: {
     fontFamily: "Outfit-Medium",
+    textDecorationLine: "underline",
   },
 });
