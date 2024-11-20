@@ -3,10 +3,12 @@ import { View, Text, TextInput, Image, ScrollView, TouchableOpacity } from "reac
 import { StyleSheet } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft, faStar } from "@fortawesome/free-solid-svg-icons";
+import { router } from "expo-router";
+import { Route } from "expo-router/build/Route";
 
-const sifestImage = require('../../assets/images/sifest.png');
-const uxResearchImage = require('../../assets/images/UX.png');
-const pertaminaImage = require('../../assets/images/pertamina.png');
+const sifestImage = require('../../assets/images/flyer/sifest.png');
+const uxResearchImage = require('../../assets/images/flyer/UX.png');
+const pertaminaImage = require('../../assets/images/flyer/pertamina.png');
 
 type EventData = {
   title: string;
@@ -18,17 +20,17 @@ const eventData: EventData[] = [
   {
     title: "SI FEST 2023",
     image: sifestImage,
-    type: "Seminar", 
+    type: "Seminar",
   },
   {
     title: "Mastering Your UX Research",
     image: uxResearchImage,
-    type: "Lomba", 
+    type: "Lomba",
   },
   {
     title: "Pertamina Goes to Campus",
     image: pertaminaImage,
-    type: "Seminar", 
+    type: "Seminar",
   },
 ];
 
@@ -43,17 +45,17 @@ const HomeScreen = () => {
     activeFilter === "Semua" ? true : event.type === activeFilter
   );
 
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null); 
-  const [commentText, setCommentText] = useState(""); 
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [commentText, setCommentText] = useState("");
 
   const handleExpand = (index: number) => {
-    setExpandedIndex(index === expandedIndex ? null : index); 
+    setExpandedIndex(index === expandedIndex ? null : index);
   };
 
   const handleSend = () => {
     console.log("Komentar terkirim:", commentText);
-    setCommentText(""); 
-    setExpandedIndex(null); 
+    setCommentText("");
+    setExpandedIndex(null);
   };
 
   return (
@@ -118,7 +120,10 @@ const HomeScreen = () => {
                 </TouchableOpacity>
               </View>
             )}
-            <TouchableOpacity style={styles.detailButton}>
+            <TouchableOpacity style={styles.detailButton}
+              onPress={() => {
+                router.push("/Detail");
+              }}>
               <Text style={styles.detailButtonText}>Rincian Kegiatan</Text>
             </TouchableOpacity>
           </View>
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
     fontFamily: "Outfit-Regular",
   },
   activeButton: {
-    backgroundColor: "#0B3954", 
+    backgroundColor: "#0B3954",
     shadowColor: "#000000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,

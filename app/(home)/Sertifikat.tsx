@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity, Modal } from "react-native";
 import { StyleSheet } from "react-native";
 
-const sifestImage = require("../../assets/images/sifest.png");
+const sifestImage = require("../../assets/images/flyer/sifest.png");
 
 type EventData = {
   title: string;

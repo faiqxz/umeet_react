@@ -10,7 +10,7 @@ const DetailScreen = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Image
-                source={require("../../assets/images/sipesdetail.png")}
+                source={require("../../assets/images/flyer/sipesdetail.png")}
                 style={styles.eventImage}
             />
 
