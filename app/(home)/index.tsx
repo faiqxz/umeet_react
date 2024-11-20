@@ -45,7 +45,7 @@ export default function HomeScreen() {
               style={styles.backgroundImage}
               imageStyle={{
                 borderBottomLeftRadius: 15,
-                borderBottomRightRadius: 15, 
+                borderBottomRightRadius: 15,
               }}
             >
 
@@ -64,7 +64,7 @@ export default function HomeScreen() {
                       router.push("/Profil");
                     }}>
                     <Image
-                      source={require("../../assets/images/avapro.jpg")}
+                      source={require("../../assets/images/ava/avapro.jpg")}
                       style={styles.avatarProfile}
                     />
                   </TouchableOpacity>
@@ -145,15 +145,6 @@ export default function HomeScreen() {
 
                   {showSavedCard ? (
                     <View style={styles.eventCard}>
-                      <ImageBackground
-                        source={require("../../assets/images/element.png")}
-                        resizeMode="cover"
-                        style={styles.backgroundImage}
-                        imageStyle={{
-                          borderBottomLeftRadius: 15,
-                          borderBottomRightRadius: 15, // Sesuaikan jika card bawah rounded
-                        }}
-                      ></ImageBackground>
                       <Text style={styles.eventTime}>Besok, 14:00 WIB</Text>
                       <Text style={styles.eventTitle}>WEBINAR | React Native</Text>
                       <Text style={styles.eventOrganizer}>👨‍👦‍👦 HIMSI Fasilkom Unsri</Text>
@@ -162,15 +153,15 @@ export default function HomeScreen() {
                         <Text style={styles.followedByText}>Diikuti oleh   </Text>
                         <View style={styles.avatarContainer}>
                           <Image
-                            source={require("../../assets/images/ava1.jpg")}
+                            source={require("../../assets/images/ava/ava1.jpg")}
                             style={styles.avatar}
                           />
                           <Image
-                            source={require("../../assets/images/ava3.png")}
+                            source={require("../../assets/images/ava/ava3.png")}
                             style={styles.avatar}
                           />
                           <Image
-                            source={require("../../assets/images/ava2.png")}
+                            source={require("../../assets/images/ava/ava2.png")}
                             style={styles.avatar}
                           />
                         </View>
@@ -186,19 +177,19 @@ export default function HomeScreen() {
                         <Text style={styles.followedByText}>Diikuti oleh   </Text>
                         <View style={styles.avatarContainer}>
                           <Image
-                            source={require("../../assets/images/ava1.jpg")}
+                            source={require("../../assets/images/ava/ava1.jpg")}
                             style={styles.avatar}
                           />
                           <Image
-                            source={require("../../assets/images/ava2.png")}
+                            source={require("../../assets/images/ava/ava2.png")}
                             style={styles.avatar}
                           />
                           <Image
-                            source={require("../../assets/images/ava3.png")}
+                            source={require("../../assets/images/ava/ava3.png")}
                             style={styles.avatar}
                           />
                           <Image
-                            source={require("../../assets/images/ava1.jpg")}
+                            source={require("../../assets/images/ava/ava1.jpg")}
                             style={styles.avatar}
                           />
                         </View>
@@ -291,7 +282,7 @@ export default function HomeScreen() {
 
                 <View style={styles.iconContainer}>
                   <Image
-                    source={require("../../assets/images/himsi.png")}
+                    source={require("../../assets/images/logo/himsi.png")}
                     style={styles.organizerLogo}
                   />
                   <Text style={styles.iconOrg}>HIMSI</Text>
@@ -299,21 +290,21 @@ export default function HomeScreen() {
 
                 <View style={styles.iconContainer}>
                   <Image
-                    source={require("../../assets/images/bem.png")}
+                    source={require("../../assets/images/logo/bem.png")}
                     style={styles.organizerLogo}
                   />
                   <Text style={styles.iconOrg}>BEM KM FASILKOM</Text>
                 </View>
                 <View style={styles.iconContainer}>
                   <Image
-                    source={require("../../assets/images/hmif.png")}
+                    source={require("../../assets/images/logo/hmif.png")}
                     style={styles.organizerLogo}
                   />
                   <Text style={styles.iconOrg}>HMIF</Text>
                 </View>
                 <View style={styles.iconContainer}>
                   <Image
-                    source={require("../../assets/images/intelll.png")}
+                    source={require("../../assets/images/logo/intelll.png")}
                     style={styles.organizerLogo}
                   />
                   <Text style={styles.iconOrg}>BO INTEL</Text>
@@ -325,10 +316,14 @@ export default function HomeScreen() {
               <Text style={styles.sectionTitle}>
                 Rekomendasi Event untuk Anda
               </Text>
-              <View style={styles.recommendationContainer}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.recommendationScrollContainer}
+              >
                 <View style={styles.recommendationCard}>
                   <Image
-                    source={require("../../assets/images/pertamina.png")}
+                    source={require("../../assets/images/flyer/pertamina.png")}
                     style={styles.recommendationImage}
                   />
                   <Text style={styles.recommendationTitle}>
@@ -340,7 +335,7 @@ export default function HomeScreen() {
                 </View>
                 <View style={styles.recommendationCard}>
                   <Image
-                    source={require("../../assets/images/oprecbem.png")}
+                    source={require("../../assets/images/flyer/oprecbem.png")}
                     style={styles.recommendationImage}
                   />
                   <Text style={styles.recommendationTitle}>
@@ -350,8 +345,66 @@ export default function HomeScreen() {
                     Open Recruitment Staff BEM UNSRI 2024
                   </Text>
                 </View>
-              </View>
+                <View style={styles.recommendationCard}>
+                  <Image
+                    source={require("../../assets/images/flyer/oprecbem.png")}
+                    style={styles.recommendationImage}
+                  />
+                  <Text style={styles.recommendationTitle}>
+                    Open Recruitment Staff BEM UNSRI 2024
+                  </Text>
+                  <Text style={styles.recommendationSubTitle}>
+                    Open Recruitment Staff BEM UNSRI 2024
+                  </Text>
+                </View>
+                <View style={styles.recommendationCard}>
+                  <Image
+                    source={require("../../assets/images/flyer/pertamina.png")}
+                    style={styles.recommendationImage}
+                  />
+                  <Text style={styles.recommendationTitle}>
+                    Pertamina Goes to Campus
+                  </Text>
+                  <Text style={styles.recommendationSubTitle}>
+                    PNRE University Outreach & Engagement
+                  </Text>
+                </View>
+                <View style={styles.recommendationCard}>
+                  <Image
+                    source={require("../../assets/images/flyer/oprecbem.png")}
+                    style={styles.recommendationImage}
+                  />
+                  <Text style={styles.recommendationTitle}>
+                    Open Recruitment Staff BEM UNSRI 2024
+                  </Text>
+                  <Text style={styles.recommendationSubTitle}>
+                    Open Recruitment Staff BEM UNSRI 2024
+                  </Text>
+                </View>
+                <View style={styles.recommendationCard}>
+                  <Image
+                    source={require("../../assets/images/flyer/pertamina.png")}
+                    style={styles.recommendationImage}
+                  />
+                  <Text style={styles.recommendationTitle}>
+                    Pertamina Goes to Campus
+                  </Text>
+                  <Text style={styles.recommendationSubTitle}>
+                    PNRE University Outreach & Engagement
+                  </Text>
+                </View>
+                {/* Tombol Panah ke Kanan */}
+                <View style={styles.arrowContainer}>
+                  <TouchableOpacity
+                    style={styles.arrowButton}
+                    onPress={() => router.push("/Lainnya")}
+                  >
+                    <Icon name="arrow-right" size={50} color="black" />
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
             </View>
+
             <View style={styles.calendar}>
               <Text style={styles.sectionTitle}>Kalender</Text>
               <Calendar />
@@ -696,18 +749,13 @@ const styles = StyleSheet.create({
   recommendationCard: {
     marginTop: 10,
     backgroundColor: "#fff",
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-    marginRight: 10,
-    width: "48%",
+    borderRadius: 15,
+    marginRight: 15,
+    width: "15%",
   },
   recommendationImage: {
     width: "100%",
-    height: 100,
+    height: 120,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -721,6 +769,19 @@ const styles = StyleSheet.create({
     fontFamily: "Outfit-Regular",
     color: "#6b7280",
     padding: 6,
+  }, 
+  arrowContainer: {
+    flexDirection: 'row',  // Menggunakan row agar tombol berada secara horizontal
+    justifyContent: 'center', // Membuat tombol berada di tengah horizontal
+    marginVertical: 60,  // Menambahkan sedikit margin atas agar tidak terlalu rapat
+  },
+  arrowButton: {
+    padding: 10,
+  },
+  recommendationScrollContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginRight: 0,
   },
   calendar: {
     marginTop: 20,

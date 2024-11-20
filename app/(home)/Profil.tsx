@@ -24,7 +24,7 @@ const ProfilePage: React.FC = () => {
         <View style={styles.container}>
             <View style={styles.profilePictureWrapper}>
                 <Image
-                    source={require("../../assets/images/avapro.jpg")}
+                    source={require("../../assets/images/ava/avapro.jpg")}
                     style={styles.profilePicture}
                 />
             </View>

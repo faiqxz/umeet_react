@@ -30,7 +30,7 @@ const HomeScreen = () => {
                     <View style={styles.eventCard}>
                         <View style={styles.eventImageContainer}>
                             <Image
-                                source={require("../../assets/images/sifest.png")}
+                                source={require("../../assets/images/flyer/sifest.png")}
                                 style={styles.eventImage}
                             />
                         </View>
@@ -39,15 +39,15 @@ const HomeScreen = () => {
                                 <Text style={styles.eventDate}>12 November 2023</Text>
                                 <View style={styles.avatarContainer}>
                                     <Image
-                                        source={require("../../assets/images/ava1.jpg")}
+                                        source={require("../../assets/images/ava/ava1.jpg")}
                                         style={styles.avatar}
                                     />
                                     <Image
-                                        source={require("../../assets/images/ava2.png")}
+                                        source={require("../../assets/images/ava/ava2.png")}
                                         style={styles.avatar}
                                     />
                                     <Image
-                                        source={require("../../assets/images/ava3.png")}
+                                        source={require("../../assets/images/ava/ava3.png")}
                                         style={styles.avatar}
                                     />
                                 </View>
@@ -82,7 +82,7 @@ const HomeScreen = () => {
                     <View style={styles.eventCard}>
                         <View style={styles.eventImageContainer}>
                             <Image
-                                source={require("../../assets/images/Intel.png")}
+                                source={require("../../assets/images/flyer/Intel.png")}
                                 style={styles.eventImage}
                             />
                         </View>
@@ -91,15 +91,15 @@ const HomeScreen = () => {
                                 <Text style={styles.eventDate}>12 November 2023</Text>
                                 <View style={styles.avatarContainer}>
                                     <Image
-                                        source={require("../../assets/images/ava1.jpg")}
+                                        source={require("../../assets/images/ava/ava1.jpg")}
                                         style={styles.avatar}
                                     />
                                     <Image
-                                        source={require("../../assets/images/ava2.png")}
+                                        source={require("../../assets/images/ava/ava2.png")}
                                         style={styles.avatar}
                                     />
                                     <Image
-                                        source={require("../../assets/images/ava3.png")}
+                                        source={require("../../assets/images/ava/ava3.png")}
                                         style={styles.avatar}
                                     />
                                 </View>

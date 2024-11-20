@@ -20,7 +20,7 @@ export default function RootLayout() {
 
     // Load custom fonts
     const [loaded] = useFonts({
-        SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+        SpaceMono: require("../assets/fonts/Outfit-Regular.ttf"),
     });
 
     // Hide splash screen when fonts are loaded
