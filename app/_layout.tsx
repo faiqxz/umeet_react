@@ -7,10 +7,6 @@ import { useFonts } from "expo-font";
 import { Redirect, Slot, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-//   import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-// //   import Terdaftar from "./Terdaftar";
-// //   import Riwayat from "./Riwayat";
-// //   import Sertifikat from "./Sertifikat";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import AuthProvider, { useAuth } from "@/provider/AuthProvider";
 
@@ -39,10 +35,6 @@ export default function RootLayout() {
         return null;
     }
 
-    // const {user} = useAuth()
-    // if(!user){
-    //   return <Redirect href="/(auth)/signin"/>
-    // }
 
     return (
         <AuthProvider>
