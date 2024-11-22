@@ -1,7 +1,4 @@
 {
-  "splash": {
-    "image": "./assets/images/splash.png"
-  },
   "expo": {
     "name": "Umeet",
     "slug": "Umeet",
