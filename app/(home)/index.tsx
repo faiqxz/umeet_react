@@ -88,7 +88,7 @@ export default function HomeScreen() {
                       router.push("/Riwayat");
                     }}>
                       <Text style={styles.highlight}>
-                        3 Kegiatan bulan ini
+                        1 Kegiatan bulan ini
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -113,7 +113,7 @@ export default function HomeScreen() {
                           onPress={() => {
                             router.push("/Sertifikat");
                           }}>
-                          <Text style={styles.statValue}>3 Sertifikat</Text>
+                          <Text style={styles.statValue}>1 Sertifikat</Text>
                         </TouchableOpacity>
                       </View>
                     </View>
@@ -132,15 +132,30 @@ export default function HomeScreen() {
                       style={[styles.button, showSavedCard ? styles.inactiveButton : null]}
                       onPress={() => setShowSavedCard(false)}
                     >
-                      <Text style={styles.buttonText}>Sedang diikuti</Text>
+                      <Text
+                        style={[
+                          styles.buttonText,
+                          !showSavedCard ? styles.buttonTextActive : styles.buttonTextInactive,
+                        ]}
+                      >
+                        Sedang diikuti
+                      </Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
                       style={[styles.buttonSecondary, showSavedCard && styles.activeButton]}
                       onPress={() => setShowSavedCard(true)}
                     >
-                      <Text style={styles.buttonTextSecondary}>Disimpan</Text>
+                      <Text
+                        style={[
+                          styles.buttonTextSecondary,
+                          showSavedCard ? styles.buttonTextActive : styles.buttonTextInactive,
+                        ]}
+                      >
+                        Disimpan
+                      </Text>
                     </TouchableOpacity>
+
                   </View>
 
                   {showSavedCard ? (
@@ -590,7 +605,6 @@ const styles = StyleSheet.create({
   },
   buttonTextSecondary: {
     fontSize: 13,
-    color: "#3470A2",
     padding: 4,
     fontFamily: 'Outfit-Regular',
   },
@@ -603,12 +617,14 @@ const styles = StyleSheet.create({
   },
   inactiveButton: {
     backgroundColor: "#f0f0f0",
+    borderColor: "#3470A2",
+    borderWidth: 1,
   },
   buttonTextActive: {
     color: "#fff",
   },
   buttonTextInactive: {
-    color: "#000000",
+    color: "#3470A2",
   },
   eventCard: {
     backgroundColor: "#fff",
@@ -681,7 +697,6 @@ const styles = StyleSheet.create({
   headerWelcoming: {
     flexDirection: 'row',
     alignItems: 'center',
-
   },
   fiturEvents: {
     marginTop: 10,
@@ -769,7 +784,7 @@ const styles = StyleSheet.create({
     fontFamily: "Outfit-Regular",
     color: "#6b7280",
     padding: 6,
-  }, 
+  },
   arrowContainer: {
     flexDirection: 'row',  // Menggunakan row agar tombol berada secara horizontal
     justifyContent: 'center', // Membuat tombol berada di tengah horizontal
