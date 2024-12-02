@@ -7,14 +7,14 @@ import EventCard from "./EventCard";
 export function EventList({
   isHorizontal,
   footerComponent,
-  filterFavorites = false, // New prop to determine if we fetch only favorites
-  searchQuery = "", // New prop for search query
+  // filterFavorites = false, // New prop to determine if we fetch only favorites
+  // searchQuery = "", // New prop for search query
   event = [],
 }: {
   isHorizontal: boolean;
   footerComponent: any;
-  filterFavorites?: boolean; // Defaults to false
-  searchQuery: string; // Accept searchQuery prop
+  // filterFavorites?: boolean; // Defaults to false
+  // searchQuery: string; // Accept searchQuery prop
   event: any 
 }) {
   const [events, setEvents] = useState<any[]>([]);

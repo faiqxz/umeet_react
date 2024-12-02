@@ -1,4 +1,4 @@
-import useEventData from "@/hook/useEventData";
+import useEventData from "@/hooks/useEventData";
 import { formatDate } from "@/lib/formatDate";
 import { Stack, router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
@@ -19,8 +19,8 @@ const DetailScreen = () => {
   const [activeTab, setActiveTab] = useState("detail");
   const [showOverlay, setShowOverlay] = useState(false); // State for modal visibility
   const { id } = useLocalSearchParams();
-  const { eventData, loading, error } = useEventData({ id: id });
-  console.log("showOverlay:", showOverlay);
+  const params = id;
+  const { eventData, loading, error } = useEventData({ id: params });
 
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;
@@ -29,7 +29,6 @@ const DetailScreen = () => {
   if (error) {
     return <Text>Error: {error}</Text>;
   }
-  console.log(eventData);
 
   return (
     <>
@@ -44,7 +43,6 @@ const DetailScreen = () => {
         <View style={styles.detailCard}>
           <Text style={styles.tag}>{eventData[0].category.name}</Text>
           <Text style={styles.title}>{eventData[0].title}</Text>
-        
 
           {/* Event Date and Time */}
           <View style={styles.infoRow}>

@@ -10,34 +10,31 @@ import {
   ImageBackground,
 } from "react-native";
 import { StyleSheet } from "react-native";
-import Calendar from './Kalender';
+import Calendar from "./Kalender";
 import { useAuth } from "@/provider/AuthProvider";
 import { supabase } from "@/lib/supabase";
-import { useFonts } from 'expo-font';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { useFonts } from "expo-font";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { EventList } from "@/components/EventList";
-
+import useEventData from "@/hooks/useEventData";
 
 export default function HomeScreen() {
-
   const [fontsLoaded] = useFonts({
-    'Outfit-Regular': require('../../assets/fonts/Outfit-Regular.ttf'),
-    'Outfit-Medium': require('../../assets/fonts/Outfit-Medium.ttf'),
-    'Outfit-Semibold': require('../../assets/fonts/Outfit-SemiBold.ttf'),
-    'Outfit-Bold': require('../../assets/fonts/Outfit-Bold.ttf'),
-    'Outfit-Black': require('../../assets/fonts/Outfit-Black.ttf'),
-
+    "Outfit-Regular": require("../../assets/fonts/Outfit-Regular.ttf"),
+    "Outfit-Medium": require("../../assets/fonts/Outfit-Medium.ttf"),
+    "Outfit-Semibold": require("../../assets/fonts/Outfit-SemiBold.ttf"),
+    "Outfit-Bold": require("../../assets/fonts/Outfit-Bold.ttf"),
+    "Outfit-Black": require("../../assets/fonts/Outfit-Black.ttf"),
   });
 
   const { profile } = useAuth();
-
+  const { eventData } = useEventData(null);
   const [showSavedCard, setShowSavedCard] = useState<boolean>(false);
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView>
         <View style={styles.content}>
-
           {/* Mulai Card */}
           <View style={styles.card}>
             <ImageBackground
@@ -49,10 +46,8 @@ export default function HomeScreen() {
                 borderBottomRightRadius: 15,
               }}
             >
-
               {/* Mulai Atas */}
               <View style={styles.contentCard}>
-
                 {/* Mulai Header */}
                 <View style={styles.headProfile}>
                   <Text style={styles.title}>
@@ -63,7 +58,8 @@ export default function HomeScreen() {
                   <TouchableOpacity
                     onPress={() => {
                       router.push("/Profil");
-                    }}>
+                    }}
+                  >
                     <Image
                       source={require("../../assets/images/ava/avapro.jpg")}
                       style={styles.avatarProfile}
@@ -75,22 +71,24 @@ export default function HomeScreen() {
                 {/* Mulai Deskripsi */}
                 {/* {profile.full_name.toUpperCase()} */}
                 <View style={styles.headerContainer}>
-
                   <View style={styles.headerWelcoming}>
                     <Text style={styles.subtitle}>Selamat Datang, </Text>
-                    <Text style={{ fontFamily: "Outfit-Regular", fontSize: 20, }}>MOHAMMAD RIZKY!</Text>
-
+                    <Text
+                      style={{ fontFamily: "Outfit-Regular", fontSize: 20 }}
+                    >
+                      MOHAMMAD RIZKY!
+                    </Text>
                   </View>
                   <View style={styles.headerDesc}>
                     <Text style={styles.description}>
                       Anda telah mengikuti{" "}
                     </Text>
-                    <TouchableOpacity onPress={() => {
-                      router.push("/Riwayat");
-                    }}>
-                      <Text style={styles.highlight}>
-                        1 Kegiatan bulan ini
-                      </Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        router.push("/Riwayat");
+                      }}
+                    >
+                      <Text style={styles.highlight}>1 Kegiatan bulan ini</Text>
                     </TouchableOpacity>
                   </View>
 
@@ -113,14 +111,14 @@ export default function HomeScreen() {
                         <TouchableOpacity
                           onPress={() => {
                             router.push("/Sertifikat");
-                          }}>
+                          }}
+                        >
                           <Text style={styles.statValue}>1 Sertifikat</Text>
                         </TouchableOpacity>
                       </View>
                     </View>
                   </View>
                   {/* Selesai Mengikuti & Sertif */}
-
                 </View>
                 {/* Selesai Deskripsi */}
                 <View style={styles.horizontalDivider} />
@@ -130,13 +128,18 @@ export default function HomeScreen() {
                   <Text style={styles.sectionTitle}>Kegiatan mendatang</Text>
                   <View style={styles.buttonContainer}>
                     <TouchableOpacity
-                      style={[styles.button, showSavedCard ? styles.inactiveButton : null]}
+                      style={[
+                        styles.button,
+                        showSavedCard ? styles.inactiveButton : null,
+                      ]}
                       onPress={() => setShowSavedCard(false)}
                     >
                       <Text
                         style={[
                           styles.buttonText,
-                          !showSavedCard ? styles.buttonTextActive : styles.buttonTextInactive,
+                          !showSavedCard
+                            ? styles.buttonTextActive
+                            : styles.buttonTextInactive,
                         ]}
                       >
                         Sedang diikuti
@@ -144,29 +147,37 @@ export default function HomeScreen() {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                      style={[styles.buttonSecondary, showSavedCard && styles.activeButton]}
+                      style={[
+                        styles.buttonSecondary,
+                        showSavedCard && styles.activeButton,
+                      ]}
                       onPress={() => setShowSavedCard(true)}
                     >
                       <Text
                         style={[
                           styles.buttonTextSecondary,
-                          showSavedCard ? styles.buttonTextActive : styles.buttonTextInactive,
+                          showSavedCard
+                            ? styles.buttonTextActive
+                            : styles.buttonTextInactive,
                         ]}
                       >
                         Disimpan
                       </Text>
                     </TouchableOpacity>
-
                   </View>
 
                   {showSavedCard ? (
                     <View style={styles.eventCard}>
                       <Text style={styles.eventTime}>Besok, 14:00 WIB</Text>
-                      <Text style={styles.eventTitle}>WEBINAR | React Native</Text>
-                      <Text style={styles.eventOrganizer}>👨‍👦‍👦 HIMSI Fasilkom Unsri</Text>
+                      <Text style={styles.eventTitle}>
+                        WEBINAR | React Native
+                      </Text>
+                      <Text style={styles.eventOrganizer}>
+                        👨‍👦‍👦 HIMSI Fasilkom Unsri
+                      </Text>
 
                       <View style={styles.followedByContainer}>
-                        <Text style={styles.followedByText}>Diikuti oleh   </Text>
+                        <Text style={styles.followedByText}>Diikuti oleh </Text>
                         <View style={styles.avatarContainer}>
                           <Image
                             source={require("../../assets/images/ava/ava1.jpg")}
@@ -187,10 +198,12 @@ export default function HomeScreen() {
                     <View style={styles.eventCard}>
                       <Text style={styles.eventTime}>Hari ini, 08:00 WIB</Text>
                       <Text style={styles.eventTitle}>IF FEST 2024</Text>
-                      <Text style={styles.eventOrganizer}>👨‍👦‍👦 HMIF Fasilkom Unsri</Text>
+                      <Text style={styles.eventOrganizer}>
+                        👨‍👦‍👦 HMIF Fasilkom Unsri
+                      </Text>
 
                       <View style={styles.followedByContainer}>
-                        <Text style={styles.followedByText}>Diikuti oleh   </Text>
+                        <Text style={styles.followedByText}>Diikuti oleh </Text>
                         <View style={styles.avatarContainer}>
                           <Image
                             source={require("../../assets/images/ava/ava1.jpg")}
@@ -214,7 +227,6 @@ export default function HomeScreen() {
                   )}
                 </View>
                 {/* Selesai Upcoming */}
-
               </View>
               {/* Selesai Atas */}
             </ImageBackground>
@@ -225,7 +237,6 @@ export default function HomeScreen() {
 
           <View style={styles.fiturEvents}>
             <View style={styles.exploreEvents}>
-
               <View style={styles.othersEvent}>
                 <Text style={styles.sectionTitle}>Jelajahi event</Text>
                 <TouchableOpacity
@@ -234,7 +245,17 @@ export default function HomeScreen() {
                   }}
                 >
                   <View style={styles.statItem}>
-                    <Text style={[styles.statText, { textDecorationLine: 'underline', fontFamily: "Outfit-Regular" }]}>Lainnya</Text>
+                    <Text
+                      style={[
+                        styles.statText,
+                        {
+                          textDecorationLine: "underline",
+                          fontFamily: "Outfit-Regular",
+                        },
+                      ]}
+                    >
+                      Lainnya
+                    </Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -263,7 +284,6 @@ export default function HomeScreen() {
                   </View>
                 </TouchableOpacity>
 
-
                 <TouchableOpacity
                   onPress={() => {
                     router.push("/Riwayat");
@@ -285,17 +305,13 @@ export default function HomeScreen() {
                     <Text style={styles.iconText}>Sertifikat</Text>
                   </View>
                 </TouchableOpacity>
-
               </View>
               {/* Selesai 4 Fitur */}
-
-
             </View>
 
             <View style={styles.organizers}>
               <Text style={styles.sectionTitle}>Penyelenggara</Text>
               <View style={styles.organizerLogos}>
-
                 <View style={styles.iconContainer}>
                   <Image
                     source={require("../../assets/images/logo/himsi.png")}
@@ -325,7 +341,6 @@ export default function HomeScreen() {
                   />
                   <Text style={styles.iconOrg}>BO INTEL</Text>
                 </View>
-
               </View>
             </View>
             <View style={styles.recommendations}>
@@ -410,16 +425,22 @@ export default function HomeScreen() {
                   </Text>
                 </View>
               </ScrollView> */}
-                {/* Tombol Panah ke Kanan */}
-                <EventList isHorizontal={true} footerComponent={<View style={styles.arrowContainer}>
-                  <TouchableOpacity
-                    style={styles.arrowButton}
-                    onPress={() => router.push("/Lainnya")}
-                  >
-                    <Icon name="arrow-right" size={50} color="black" />
-                  </TouchableOpacity>
-                </View>}/>
-                {/* <View style={styles.arrowContainer}>
+              {/* Tombol Panah ke Kanan */}
+              <EventList
+                isHorizontal={true}
+                event={eventData}
+                footerComponent={
+                  <View style={styles.arrowContainer}>
+                    <TouchableOpacity
+                      style={styles.arrowButton}
+                      onPress={() => router.push("/Lainnya")}
+                    >
+                      <Icon name="arrow-right" size={50} color="black" />
+                    </TouchableOpacity>
+                  </View>
+                }
+              />
+              {/* <View style={styles.arrowContainer}>
                   <TouchableOpacity
                     style={styles.arrowButton}
                     onPress={() => router.push("/Lainnya")}
@@ -435,10 +456,9 @@ export default function HomeScreen() {
             </View>
           </View>
           {/* Selesai Fitur */}
-
         </View>
-      </ScrollView >
-    </SafeAreaView >
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -447,18 +467,16 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 10,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   safeArea: {
     backgroundColor: "#f9f9f9",
   },
-  card: {
-
-  },
+  card: {},
   contentCard: {
-    backgroundColor: '#fff',
-    backgroundBlendMode: 'lighten',
+    backgroundColor: "#fff",
+    backgroundBlendMode: "lighten",
     padding: 20,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
@@ -471,31 +489,31 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    opacity: 0.9
+    opacity: 0.9,
   },
   content: {
     backgroundColor: "#f0f0f0",
   },
   headProfile: {
     flexDirection: "row",
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   title: {
     paddingTop: 10,
     fontSize: 35,
   },
   logoU: {
-    color: '#DDA915',
-    fontFamily: 'Outfit-Bold',
+    color: "#DDA915",
+    fontFamily: "Outfit-Bold",
   },
   logoMeet: {
-    color: '#3470A2',
-    fontFamily: 'Outfit-Bold',
+    color: "#3470A2",
+    fontFamily: "Outfit-Bold",
   },
   subtitle: {
     fontSize: 20,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
     marginTop: 5,
     marginBottom: 5,
   },
@@ -503,13 +521,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   description: {
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
     flexDirection: "row",
     fontSize: 16,
     color: "#6b7280",
   },
   highlight: {
-    fontFamily: 'Outfit-Semibold',
+    fontFamily: "Outfit-Semibold",
     fontSize: 16,
     color: "#3470A2",
   },
@@ -535,20 +553,20 @@ const styles = StyleSheet.create({
   },
   stattItem: {
     flex: 1,
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     marginRight: 10,
   },
   statTitle: {
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
     fontSize: 16,
-    color: '#666',
+    color: "#666",
     marginBottom: 5,
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     textAlign: "left",
   },
   statValueContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 5,
   },
   icon: {
@@ -557,8 +575,8 @@ const styles = StyleSheet.create({
   statValue: {
     marginStart: 10,
     fontSize: 16,
-    fontFamily: 'Outfit-Regular',
-    color: '#000',
+    fontFamily: "Outfit-Regular",
+    color: "#000",
   },
   divider: {
     width: 1,
@@ -568,18 +586,16 @@ const styles = StyleSheet.create({
   },
   horizontalDivider: {
     height: 1,
-    backgroundColor: '#ddd',
+    backgroundColor: "#ddd",
     marginVertical: 15,
   },
-  upcomingEvents: {
-
-  },
+  upcomingEvents: {},
   sectionTitle: {
     fontSize: 19,
     fontFamily: "Outfit-Medium",
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   button: {
     backgroundColor: "#3470A2",
@@ -594,7 +610,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
     fontSize: 13,
     padding: 4,
   },
@@ -615,7 +631,7 @@ const styles = StyleSheet.create({
   buttonTextSecondary: {
     fontSize: 13,
     padding: 4,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
   },
   activeButton: {
     backgroundColor: "#3470A2",
@@ -651,28 +667,28 @@ const styles = StyleSheet.create({
   },
   eventTime: {
     fontSize: 12,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
     color: "#6b7280",
   },
   eventTitle: {
     fontSize: 18,
-    fontFamily: 'Outfit-Semibold',
-    color: '#3470A2',
+    fontFamily: "Outfit-Semibold",
+    color: "#3470A2",
   },
   eventOrganizer: {
     fontSize: 15,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
     color: "#6b7280",
   },
   followedByContainer: {
     flexDirection: "row",
     alignItems: "center",
     marginTop: 5,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
   },
   followedByText: {
-    fontFamily: 'Outfit-Regular',
+    fontFamily: "Outfit-Regular",
     fontSize: 15,
     color: "#6b7280",
   },
@@ -693,7 +709,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 30,
-    borderColor: '#3470A2',
+    borderColor: "#3470A2",
     borderWidth: 1,
     shadowColor: "#000000",
     shadowOffset: { width: 0, height: 2 },
@@ -704,8 +720,8 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   headerWelcoming: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   fiturEvents: {
     marginTop: 10,
@@ -718,9 +734,9 @@ const styles = StyleSheet.create({
     paddingStart: 10,
   },
   othersEvent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   eventIcons: {
     flexDirection: "row",
@@ -795,16 +811,16 @@ const styles = StyleSheet.create({
     padding: 6,
   },
   arrowContainer: {
-    flexDirection: 'row',  // Menggunakan row agar tombol berada secara horizontal
-    justifyContent: 'center', // Membuat tombol berada di tengah horizontal
-    marginVertical: 60,  // Menambahkan sedikit margin atas agar tidak terlalu rapat
+    flexDirection: "row", // Menggunakan row agar tombol berada secara horizontal
+    justifyContent: "center", // Membuat tombol berada di tengah horizontal
+    marginVertical: 60, // Menambahkan sedikit margin atas agar tidak terlalu rapat
   },
   arrowButton: {
     padding: 10,
   },
   recommendationScrollContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+    flexDirection: "row",
+    justifyContent: "flex-start",
     marginRight: 0,
   },
   calendar: {

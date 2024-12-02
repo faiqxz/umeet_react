@@ -11,22 +11,31 @@ const EventCard = ({
   organizer,
   eventDate,
   imageUrl,
-  price, // Menambahkan properti harga
+  price,
+  avatars,
 }: {
-  id:string,
+  id: string;
   title: string;
   description: string;
   organizer: string;
   eventDate: string;
   imageUrl: string;
   price: string; // Menambahkan tipe harga
+  avatars: any;
 }) => {
   return (
-    <TouchableOpacity onPress={()=>{
-      router.push({pathname:"/(home)/[id]", params: {id: id}})
-    }} style={styles.card}>
+    <TouchableOpacity
+      onPress={() => {
+        router.push({ pathname: "/(home)/[id]", params: { id: id } });
+      }}
+      style={styles.card}
+    >
       {/* Bagian Gambar */}
-      <Image source={{ uri: imageUrl }} resizeMode="cover" style={styles.image} />
+      <Image
+        source={{ uri: imageUrl }}
+        resizeMode="cover"
+        style={styles.image}
+      />
 
       {/* Bagian Konten */}
       <View style={styles.content}>
@@ -35,7 +44,8 @@ const EventCard = ({
           <Text style={styles.dateText}>
             {new Date(eventDate).toLocaleDateString("id-ID")}
           </Text>
-          <Text style={styles.priceText}>{price}</Text> {/* Menambahkan harga */}
+          <Text style={styles.priceText}>{price}</Text>
+          {/* Menambahkan harga */}
         </View>
 
         {/* Judul dan Deskripsi */}

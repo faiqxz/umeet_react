@@ -13,10 +13,9 @@ SplashScreen.preventAutoHideAsync();
 // Create Bottom Tab Navigator
 
 export default function RootLayout() {
-
-  const { user } = useAuth()
+  const { user } = useAuth();
   if (!user) {
-    return <Redirect href="/(auth)/signin" />
+    return <Redirect href="/(auth)/signin" />;
   }
 
   return (
@@ -33,7 +32,7 @@ export default function RootLayout() {
           headerTintColor: "#000",
           title: "Kamu terdaftar di sini",
           headerTitleStyle: {
-            fontFamily: 'Outfit-Semibold',
+            fontFamily: "Outfit-Semibold",
             fontSize: 18,
           },
         }}
@@ -49,7 +48,7 @@ export default function RootLayout() {
           headerTintColor: "#000",
           title: "Jangan lewatkan event favoritmu!",
           headerTitleStyle: {
-            fontFamily: 'Outfit-Semibold',
+            fontFamily: "Outfit-Semibold",
             fontSize: 18,
           },
         }}
@@ -65,7 +64,7 @@ export default function RootLayout() {
           headerTintColor: "#000",
           title: "Kamu pernah mengunjungi ini",
           headerTitleStyle: {
-            fontFamily: 'Outfit-Semibold',
+            fontFamily: "Outfit-Semibold",
             fontSize: 18,
           },
         }}
@@ -81,13 +80,13 @@ export default function RootLayout() {
           headerTintColor: "#000",
           title: "Unduh sertifikatmu disini!",
           headerTitleStyle: {
-            fontFamily: 'Outfit-Semibold',
+            fontFamily: "Outfit-Semibold",
             fontSize: 18,
           },
         }}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Detail"
         options={{
           headerStyle: {
@@ -101,7 +100,7 @@ export default function RootLayout() {
             fontSize: 18,
           },
         }}
-      />
+      /> */}
 
       <Stack.Screen
         name="Lainnya"
@@ -113,7 +112,7 @@ export default function RootLayout() {
           headerTintColor: "#000",
           title: "Selengkapnya",
           headerTitleStyle: {
-            fontFamily: 'Outfit-Semibold',
+            fontFamily: "Outfit-Semibold",
             fontSize: 18,
           },
         }}
@@ -129,12 +128,11 @@ export default function RootLayout() {
           headerTintColor: "#000",
           title: "Profil kamu",
           headerTitleStyle: {
-            fontFamily: 'Outfit-Semibold',
+            fontFamily: "Outfit-Semibold",
             fontSize: 18,
           },
         }}
       />
-
     </Stack>
   );
 }
