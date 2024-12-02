@@ -10,16 +10,8 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useFonts } from "expo-font";
-import EventCard from "@/components/EventCard";
 import { EventList } from "@/components/EventList";
 import useEventData from "@/hooks/useEventData";
-
-interface Event {
-  id: string;
-  title: string;
-  description: string;
-  image: any;
-}
 
 export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
