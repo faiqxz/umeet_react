@@ -15,6 +15,7 @@ import { useAuth } from "@/provider/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import { useFonts } from 'expo-font';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { EventList } from "@/components/EventList";
 
 
 export default function HomeScreen() {
@@ -331,7 +332,7 @@ export default function HomeScreen() {
               <Text style={styles.sectionTitle}>
                 Rekomendasi Event untuk Anda
               </Text>
-              <ScrollView
+              {/* <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.recommendationScrollContainer}
@@ -408,16 +409,24 @@ export default function HomeScreen() {
                     PNRE University Outreach & Engagement
                   </Text>
                 </View>
+              </ScrollView> */}
                 {/* Tombol Panah ke Kanan */}
-                <View style={styles.arrowContainer}>
+                <EventList isHorizontal={true} footerComponent={<View style={styles.arrowContainer}>
                   <TouchableOpacity
                     style={styles.arrowButton}
                     onPress={() => router.push("/Lainnya")}
                   >
                     <Icon name="arrow-right" size={50} color="black" />
                   </TouchableOpacity>
-                </View>
-              </ScrollView>
+                </View>}/>
+                {/* <View style={styles.arrowContainer}>
+                  <TouchableOpacity
+                    style={styles.arrowButton}
+                    onPress={() => router.push("/Lainnya")}
+                  >
+                    <Icon name="arrow-right" size={50} color="black" />
+                  </TouchableOpacity>
+                </View> */}
             </View>
 
             <View style={styles.calendar}>
